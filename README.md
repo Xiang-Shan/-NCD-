@@ -1,28 +1,33 @@
-# NCD Simulator Package
+# NCD 豁免思想实验模拟器
 
-This repository contains a self-contained static simulator for illustrating a simplified NCD waiver thought experiment. It is designed for communication and sensitivity analysis, not as a rule-level exact pricing or policy engine.
+这是一个可离线运行的静态模拟器，用于展示一个简化的 NCD waiver（无赔款优待豁免）思想实验。它的目标是支持透明沟通、参数敏感性分析与机制讨论，而不是复现任何正式规则、未公开方法或生产定价引擎。
 
-## Main Files
-- [index.html](./index.html): default entry page for local viewing and GitHub Pages
-- [simulation.html](./simulation.html): compatibility entry that redirects to the main page
-- [math_model.md](./math_model.md): mathematical assumptions and model notes
-- [vendor-mathjax](./vendor-mathjax): local MathJax runtime used for formula rendering
-- [vendor-katex](./vendor-katex): local KaTeX CSS and fonts
+## 在线演示
 
-## Local Preview
-Open [index.html](./index.html) directly in a browser. The simulator is fully static and does not require a backend service.
+- 根入口：[https://xiang-shan.github.io/-NCD-/](https://xiang-shan.github.io/-NCD-/)
+- 兼容入口：[https://xiang-shan.github.io/-NCD-/simulation.html](https://xiang-shan.github.io/-NCD-/simulation.html)
 
-## GitHub Pages Demo
-After GitHub Pages is enabled for this repository, the online demo will be available at:
+## 仓库内容
 
-- Root entry: [https://xiang-shan.github.io/-NCD-/](https://xiang-shan.github.io/-NCD-/)
-- Compatibility entry: [https://xiang-shan.github.io/-NCD-/simulation.html](https://xiang-shan.github.io/-NCD-/simulation.html)
+- [index.html](./index.html)：默认入口，适用于本地打开和 GitHub Pages
+- [simulation.html](./simulation.html)：兼容入口，会跳转到主页面
+- [math_model.md](./math_model.md)：建模假设、公式与口径说明
+- [vendor-mathjax](./vendor-mathjax)：本地 MathJax 运行时，用于公式渲染
+- [vendor-katex](./vendor-katex)：本地 KaTeX CSS 与字体资源
 
-## Modeling Scope
-The simulator mirrors the current simplified project logic:
+## 本地使用
 
-- annual claim counts are modeled with a Poisson assumption
-- NCD movement is represented as a yearly Markov-style transition
-- the tool is intended to support transparent discussion of assumptions and trade-offs
+直接在浏览器中打开 [index.html](./index.html) 即可。页面完全静态，不依赖后端服务，也不需要额外安装包。
 
-It should be interpreted as an analytical thought experiment rather than a final market rule, unpublished methodology, or production pricing engine.
+## 模型范围
+
+当前版本采用一组刻意简化的分析口径：
+
+- 将 NCD 状态表示为 10 档等级
+- 用年度 Markov transition（马尔可夫转移）表示等级迁移
+- 用 Poisson（泊松）分布表示年度责任赔次
+- 对比“基线口径”与“每保单期最多豁免 1 次”的思想实验方案
+
+## 使用边界
+
+这个仓库应被理解为一个透明分析框架，而不是政策解读。页面中的参数、矩阵和指标用于帮助讨论 trade-off（权衡），不应被解读为任何已定监管细则、官方算法或正式市场规则。

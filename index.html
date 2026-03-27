@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中国商业车险 NCD 豁免规则影响模拟</title>
+  <title>中国商业车险 NCD 豁免思想实验模拟</title>
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23b8602e'/%3E%3Cpath d='M17 20h12c9.4 0 15 4.8 15 12S38.4 44 29 44H17V20zm10.8 18.1c6.2 0 10.1-2.3 10.1-6.1s-3.9-6.1-10.1-6.1h-4.7v12.2h4.7z' fill='%23fff7ee'/%3E%3C/svg%3E">
   <script src="./vendor-mathjax/MathJax.js?config=scipy-mathjax"></script>
@@ -152,6 +152,83 @@
       border: 1px solid rgba(31, 39, 48, 0.08);
       color: var(--muted);
       font-size: 13px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 39, 48, 0.1);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+    }
+
+    .hero-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(31, 39, 48, 0.12);
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .hero-link-primary {
+      background: linear-gradient(135deg, #b8602e, #cc7b44);
+      border-color: transparent;
+      color: #fff;
+    }
+
+    .hero-note-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .hero-note-card {
+      position: relative;
+      overflow: hidden;
+      padding: 14px 15px;
+      border-radius: 18px;
+      border: 1px solid rgba(31, 39, 48, 0.08);
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .hero-note-card::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      right: -36px;
+      bottom: -62px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(184, 96, 46, 0.14), transparent 72%);
+    }
+
+    .hero-note-title {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero-note-body {
+      position: relative;
+      z-index: 1;
+      margin: 8px 0 0;
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .layout {
@@ -820,6 +897,10 @@
       .latex-formula {
         font-size: 22px;
       }
+
+      .hero-note-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 720px) {
@@ -840,6 +921,11 @@
 
       .hero {
         padding: 22px 20px;
+      }
+
+      .hero-actions,
+      .hero-note-grid {
+        margin-top: 18px;
       }
 
       .panel,
@@ -868,6 +954,10 @@
         display: none;
       }
 
+      .hero-link {
+        width: 100%;
+      }
+
       .latex-formula {
         font-size: 19px;
       }
@@ -877,11 +967,11 @@
 <body>
   <div class="page">
     <header class="hero">
-      <div class="eyebrow">中国商业车险 · NCD矩阵模拟</div>
-      <h1>智能网联车 NCD 豁免规则影响模拟页</h1>
+      <div class="eyebrow">中国商业车险 · NCD 思想实验模拟</div>
+      <h1>智能网联车 NCD 豁免思想实验模拟</h1>
       <p>
-        用年度马尔可夫转移矩阵对比“现行 NCD 规则”和“自动驾驶责任事故可豁免 1 次”两种口径下的等级分布演化。
-        页面默认采用封闭续保群假设，所有参数均可在本地离线调节并即时重算。
+        用年度马尔可夫转移矩阵对比“基线 NCD 续保口径”和“责任事故可豁免 1 次”的简化方案，
+        观察不同假设下的等级分布演化。页面默认采用封闭续保群假设，所有参数均可在本地离线调节并即时重算。
       </p>
       <div class="pill-row">
         <span class="pill">封闭续保群</span>
@@ -889,13 +979,32 @@
         <span class="pill">λ 与 F 口径一致</span>
         <span class="pill">每保单期最多豁免 1 次</span>
       </div>
+      <div class="hero-actions">
+        <a class="hero-link hero-link-primary" href="./math_model.md">查看建模说明</a>
+        <a class="hero-link" href="./README.md">查看仓库简介</a>
+        <a class="hero-link" href="https://github.com/Xiang-Shan/-NCD-" target="_blank" rel="noreferrer">打开 GitHub 仓库</a>
+      </div>
+      <div class="hero-note-grid">
+        <article class="hero-note-card">
+          <p class="hero-note-title">页面定位</p>
+          <p class="hero-note-body">这是一个透明分析框架，用来讨论 trade-off，而不是政策解读或正式测算口径。</p>
+        </article>
+        <article class="hero-note-card">
+          <p class="hero-note-title">建议阅读顺序</p>
+          <p class="hero-note-body">先调节 T、F、e 与初始分布，再看平均 NCD 系数路径、差异矩阵和最终轮次差值表。</p>
+        </article>
+        <article class="hero-note-card">
+          <p class="hero-note-title">适用边界</p>
+          <p class="hero-note-body">结果只反映当前简化假设下的相对变化，用于沟通与 sensitivity analysis，不对应正式市场规则。</p>
+        </article>
+      </div>
     </header>
 
     <div class="layout">
       <aside class="panel">
         <section class="section">
           <h2>核心参数</h2>
-          <p>默认使用中国商业车险 NCD 规则口径。修改后会立即更新图表和结果。</p>
+          <p>默认采用当前页面设定的简化 NCD 假设。修改后会立即更新图表和结果。</p>
           <div class="control-group">
             <div class="control-row">
               <div class="duo-input">
@@ -1027,7 +1136,7 @@
       <section class="workspace">
         <section class="workspace-card">
           <h2>结果总览</h2>
-          <p class="subtle">当前默认查看最终轮次。拖动时间滑杆或点击播放，可观察基线与豁免两种口径的动态迁移。</p>
+          <p class="subtle">当前默认查看最终轮次。拖动时间滑杆或点击播放，可观察基线假设与豁免方案的动态迁移。</p>
           <div class="metric-grid">
             <article class="metric-card">
               <div class="metric-label">当前查看轮次</div>
@@ -1042,7 +1151,7 @@
             <article class="metric-card">
               <div class="metric-label">豁免平均 NCD 系数</div>
               <div class="metric-value" id="exemptCoeffValue">0.0000</div>
-              <div class="metric-foot">自动驾驶责任事故可豁免 1 次</div>
+              <div class="metric-foot">思想实验方案：责任事故可豁免 1 次</div>
             </article>
             <article class="metric-card">
               <div class="metric-label">保费影响比</div>
@@ -1092,24 +1201,24 @@
           <article class="chart-card">
             <header>
               <div>
-                <h2>基线规则分布迁移</h2>
-                <p class="subtle">不考虑自动驾驶责任事故豁免。</p>
+                <h2>基线假设分布迁移</h2>
+                <p class="subtle">用于与豁免方案对比的基准路径。</p>
               </div>
-              <div class="chart-swatch"><span class="swatch-dot" style="background:#b8602e"></span> 基线口径</div>
+              <div class="chart-swatch"><span class="swatch-dot" style="background:#b8602e"></span> 基线假设</div>
             </header>
-            <svg id="baseChart" viewBox="0 0 760 360" role="img" aria-label="基线规则NCD分布迁移图"></svg>
+            <svg id="baseChart" viewBox="0 0 760 360" role="img" aria-label="基线假设NCD分布迁移图"></svg>
             <div class="legend" id="legendBase"></div>
           </article>
 
           <article class="chart-card">
             <header>
               <div>
-                <h2>豁免规则分布迁移</h2>
-                <p class="subtle">自动驾驶责任事故每保单期至多豁免 1 次。</p>
+                <h2>豁免方案分布迁移</h2>
+                <p class="subtle">思想实验方案：责任事故每保单期至多豁免 1 次。</p>
               </div>
-              <div class="chart-swatch"><span class="swatch-dot" style="background:#0f7b6c"></span> 豁免口径</div>
+              <div class="chart-swatch"><span class="swatch-dot" style="background:#0f7b6c"></span> 豁免方案</div>
             </header>
-            <svg id="exemptChart" viewBox="0 0 760 360" role="img" aria-label="豁免规则NCD分布迁移图"></svg>
+            <svg id="exemptChart" viewBox="0 0 760 360" role="img" aria-label="豁免方案NCD分布迁移图"></svg>
             <div class="legend" id="legendExempt"></div>
           </article>
         </div>
@@ -1118,7 +1227,7 @@
           <article class="table-card">
             <header>
               <div>
-                <h2>转移矩阵（无豁免）</h2>
+                <h2>转移矩阵（基线假设）</h2>
                 <p class="subtle">一阶转移矩阵，行表示从当前等级出发，列表示到下一期等级。</p>
               </div>
               <div class="chart-swatch"><span class="swatch-dot" style="background:#b8602e"></span> 概率热力</div>
@@ -1130,10 +1239,10 @@
           <article class="table-card">
             <header>
               <div>
-                <h2>转移矩阵（含豁免）</h2>
-                <p class="subtle">自动驾驶责任事故可豁免 1 次后的年度一阶转移矩阵。</p>
+                <h2>转移矩阵（豁免方案）</h2>
+                <p class="subtle">思想实验方案下，责任事故可豁免 1 次后的年度一阶转移矩阵。</p>
               </div>
-              <div class="chart-swatch"><span class="swatch-dot" style="background:#0f7b6c"></span> 豁免口径</div>
+              <div class="chart-swatch"><span class="swatch-dot" style="background:#0f7b6c"></span> 豁免方案</div>
             </header>
             <div class="matrix-note">和基线矩阵对照，可直接看出保留在低等级或迁回低等级的概率变化。</div>
             <div class="table-wrap" id="exemptMatrixTable"></div>
@@ -1142,8 +1251,8 @@
           <article class="table-card matrix-wide">
             <header>
               <div>
-                <h2>差异矩阵（含豁免 - 无豁免）</h2>
-                <p class="subtle">显示豁免规则对一阶转移概率的净影响，单位为基点 bp。</p>
+                <h2>差异矩阵（豁免方案 - 基线假设）</h2>
+                <p class="subtle">显示豁免方案对一阶转移概率的净影响，单位为基点 bp。</p>
               </div>
               <div class="chart-swatch"><span class="swatch-dot" style="background:#0f7b6c"></span> 绿增红减</div>
             </header>
