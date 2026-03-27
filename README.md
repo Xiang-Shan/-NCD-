@@ -1,17 +1,28 @@
-# English Package Overview
+# NCD Simulator Package
 
-This folder contains the English-context version of the main project files for sharing with an English-speaking audience.
+This repository contains a self-contained static simulator for illustrating a simplified NCD waiver thought experiment. It is designed for communication and sensitivity analysis, not as a rule-level exact pricing or policy engine.
 
 ## Main Files
-- [simulation.html](./simulation.html): interactive offline simulator
-- [NCD_rules.md](./NCD_rules.md): core NCD rule summary
-- [adjust_rules.md](./adjust_rules.md): intelligent connected vehicle exemption rule
-- [init_paras.md](./init_paras.md): default assumptions and starting parameters
-- [simulation_math_logic.md](./simulation_math_logic.md): mathematical logic and implementation notes
-- [agent_brief.md](./agent_brief.md): short handoff brief for another agent or engineer
+- [index.html](./index.html): default entry page for local viewing and GitHub Pages
+- [simulation.html](./simulation.html): compatibility entry that redirects to the main page
+- [math_model.md](./math_model.md): mathematical assumptions and model notes
+- [vendor-mathjax](./vendor-mathjax): local MathJax runtime used for formula rendering
+- [vendor-katex](./vendor-katex): local KaTeX CSS and fonts
 
-## How to Open the Simulator
-Open [simulation.html](./simulation.html) in a browser. The folder includes the local MathJax runtime needed for formula rendering.
+## Local Preview
+Open [index.html](./index.html) directly in a browser. The simulator is fully static and does not require a backend service.
+
+## GitHub Pages Demo
+After GitHub Pages is enabled for this repository, the online demo will be available at:
+
+- Root entry: [https://xiang-shan.github.io/-NCD-/](https://xiang-shan.github.io/-NCD-/)
+- Compatibility entry: [https://xiang-shan.github.io/-NCD-/simulation.html](https://xiang-shan.github.io/-NCD-/simulation.html)
 
 ## Modeling Scope
-This English package mirrors the current project logic. It is a simplified analytical simulator for communication and sensitivity analysis, not a rule-level exact pricing or policy engine.
+The simulator mirrors the current simplified project logic:
+
+- annual claim counts are modeled with a Poisson assumption
+- NCD movement is represented as a yearly Markov-style transition
+- the tool is intended to support transparent discussion of assumptions and trade-offs
+
+It should be interpreted as an analytical thought experiment rather than a final market rule, unpublished methodology, or production pricing engine.
