@@ -23,6 +23,7 @@
       --bad: #b44335;
       --bad-soft: rgba(180, 67, 53, 0.14);
       --chart-grid: rgba(31, 39, 48, 0.16);
+      --teal-neg5: #074d5f;
       --teal-0: #0d7a74;
       --teal-1: #199084;
       --teal-2: #2ca58d;
@@ -35,6 +36,87 @@
       --brick-9: #ae453e;
       --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
       --font-display: "Songti SC", "Noto Serif SC", "STSong", serif;
+      --eyebrow-size: 13px;
+      --hero-title-size: clamp(30px, 3.6vw, 48px);
+      --hero-copy-size: 16px;
+      --pill-size: 13px;
+      --action-link-size: 14px;
+      --note-title-size: 13px;
+      --note-body-size: 14px;
+      --section-title-size: 18px;
+      --subtle-size: 13px;
+      --label-size: 14px;
+      --mini-size: 12px;
+      --metric-label-size: 13px;
+      --metric-value-size: clamp(24px, 2.2vw, 34px);
+      --metric-foot-size: 12px;
+      --timeline-readout-size: 14px;
+      --chart-swatch-size: 12px;
+      --legend-size: 12px;
+      --matrix-note-size: 12px;
+      --matrix-font-size: 12px;
+      --matrix-head-size: 13px;
+      --data-table-size: 13px;
+      --formula-title-size: 15px;
+      --formula-body-size: 13px;
+      --formula-display-size: 26px;
+      --check-size: 13px;
+      --tag-size: 12px;
+      --footnote-size: 12px;
+      --button-min-height: 42px;
+      --card-padding: 18px;
+      --panel-padding: 18px;
+      --section-padding: 16px;
+      --compare-head-min-height: 136px;
+      --compare-title-min-height: 56px;
+      --compare-subtitle-min-height: 54px;
+      --compare-note-min-height: 52px;
+      --compare-chart-height: 434px;
+      --compare-legend-min-height: 104px;
+      --compare-matrix-height: 720px;
+      --line-chart-height: 372px;
+    }
+
+    body[data-presentation-mode="on"] {
+      --eyebrow-size: 15px;
+      --hero-title-size: clamp(42px, 4.2vw, 64px);
+      --hero-copy-size: 21px;
+      --pill-size: 16px;
+      --action-link-size: 17px;
+      --note-title-size: 15px;
+      --note-body-size: 18px;
+      --section-title-size: 25px;
+      --subtle-size: 18px;
+      --label-size: 18px;
+      --mini-size: 15px;
+      --metric-label-size: 16px;
+      --metric-value-size: clamp(34px, 3vw, 50px);
+      --metric-foot-size: 15px;
+      --timeline-readout-size: 18px;
+      --chart-swatch-size: 16px;
+      --legend-size: 16px;
+      --matrix-note-size: 17px;
+      --matrix-font-size: 17px;
+      --matrix-head-size: 18px;
+      --data-table-size: 17px;
+      --formula-title-size: 20px;
+      --formula-body-size: 16px;
+      --formula-display-size: 32px;
+      --check-size: 16px;
+      --tag-size: 15px;
+      --footnote-size: 15px;
+      --button-min-height: 54px;
+      --card-padding: 24px;
+      --panel-padding: 24px;
+      --section-padding: 20px;
+      --compare-head-min-height: 186px;
+      --compare-title-min-height: 74px;
+      --compare-subtitle-min-height: 76px;
+      --compare-note-min-height: 82px;
+      --compare-chart-height: 512px;
+      --compare-legend-min-height: 144px;
+      --compare-matrix-height: 900px;
+      --line-chart-height: 436px;
     }
 
     * {
@@ -85,6 +167,10 @@
       margin: 24px auto 48px;
     }
 
+    body[data-presentation-mode="on"] .page {
+      width: min(1680px, calc(100% - 28px));
+    }
+
     .hero {
       position: relative;
       overflow: hidden;
@@ -96,6 +182,10 @@
         linear-gradient(120deg, rgba(15, 123, 108, 0.08), rgba(184, 96, 46, 0.06));
       box-shadow: var(--shadow);
       backdrop-filter: blur(16px);
+    }
+
+    body[data-presentation-mode="on"] .hero {
+      padding: 38px 40px 34px;
     }
 
     .hero::after {
@@ -116,14 +206,14 @@
       border-radius: 999px;
       background: rgba(31, 39, 48, 0.05);
       color: var(--muted);
-      font-size: 13px;
+      font-size: var(--eyebrow-size);
       letter-spacing: 0.02em;
     }
 
     h1 {
       margin: 16px 0 10px;
       font-family: var(--font-display);
-      font-size: clamp(30px, 3.6vw, 48px);
+      font-size: var(--hero-title-size);
       line-height: 1.15;
       font-weight: 700;
     }
@@ -131,7 +221,7 @@
     .hero p {
       margin: 0;
       max-width: 920px;
-      font-size: 16px;
+      font-size: var(--hero-copy-size);
       color: var(--muted);
     }
 
@@ -151,7 +241,134 @@
       background: rgba(255, 255, 255, 0.58);
       border: 1px solid rgba(31, 39, 48, 0.08);
       color: var(--muted);
-      font-size: 13px;
+      font-size: var(--pill-size);
+    }
+
+    body[data-presentation-mode="on"] .pill {
+      padding: 12px 18px;
+    }
+
+    .hero-toolbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 18px;
+    }
+
+    .presentation-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      width: min(100%, 460px);
+      padding: 13px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(31, 39, 48, 0.1);
+      background: rgba(255, 255, 255, 0.64);
+      cursor: pointer;
+      transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease, background 140ms ease;
+    }
+
+    .presentation-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(31, 39, 48, 0.1);
+      border-color: rgba(15, 123, 108, 0.2);
+    }
+
+    .presentation-toggle-copy {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .presentation-toggle-title {
+      font-size: var(--label-size);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.25;
+    }
+
+    .presentation-toggle-note {
+      font-size: var(--subtle-size);
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .presentation-toggle-control {
+      position: relative;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 74px;
+      height: 42px;
+    }
+
+    body[data-presentation-mode="on"] .presentation-toggle-control {
+      width: 84px;
+      height: 48px;
+    }
+
+    .presentation-toggle-control input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .presentation-toggle-track {
+      position: relative;
+      display: inline-flex;
+      width: 74px;
+      height: 42px;
+      border-radius: 999px;
+      background: rgba(31, 39, 48, 0.14);
+      box-shadow: inset 0 0 0 1px rgba(31, 39, 48, 0.08);
+      transition: background 160ms ease, box-shadow 160ms ease;
+    }
+
+    body[data-presentation-mode="on"] .presentation-toggle-track {
+      width: 84px;
+      height: 48px;
+    }
+
+    .presentation-toggle-track::after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: #fff8f0;
+      box-shadow: 0 8px 18px rgba(31, 39, 48, 0.18);
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    body[data-presentation-mode="on"] .presentation-toggle-track::after {
+      top: 5px;
+      left: 5px;
+      width: 38px;
+      height: 38px;
+    }
+
+    .presentation-toggle-control input:checked + .presentation-toggle-track {
+      background: linear-gradient(135deg, rgba(15, 123, 108, 0.86), rgba(33, 148, 132, 0.9));
+      box-shadow: inset 0 0 0 1px rgba(15, 123, 108, 0.16);
+    }
+
+    .presentation-toggle-control input:checked + .presentation-toggle-track::after {
+      transform: translateX(32px);
+      background: #fffdf7;
+    }
+
+    body[data-presentation-mode="on"] .presentation-toggle-control input:checked + .presentation-toggle-track::after {
+      transform: translateX(36px);
+    }
+
+    body[data-presentation-mode="on"] .presentation-toggle {
+      border-color: rgba(15, 123, 108, 0.22);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(238, 249, 246, 0.72));
     }
 
     .hero-actions {
@@ -165,14 +382,14 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 42px;
+      min-height: var(--button-min-height);
       padding: 0 16px;
       border-radius: 999px;
       border: 1px solid rgba(31, 39, 48, 0.1);
       background: rgba(255, 255, 255, 0.7);
       color: var(--ink);
       text-decoration: none;
-      font-size: 14px;
+      font-size: var(--action-link-size);
       transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
     }
 
@@ -204,6 +421,10 @@
       background: rgba(255, 255, 255, 0.58);
     }
 
+    body[data-presentation-mode="on"] .hero-note-card {
+      padding: 18px 18px 20px;
+    }
+
     .hero-note-card::after {
       content: "";
       position: absolute;
@@ -219,7 +440,7 @@
       position: relative;
       z-index: 1;
       margin: 0;
-      font-size: 13px;
+      font-size: var(--note-title-size);
       color: var(--muted);
     }
 
@@ -227,7 +448,7 @@
       position: relative;
       z-index: 1;
       margin: 8px 0 0;
-      font-size: 14px;
+      font-size: var(--note-body-size);
       line-height: 1.6;
     }
 
@@ -255,11 +476,11 @@
     .panel {
       position: sticky;
       top: 20px;
-      padding: 18px;
+      padding: var(--panel-padding);
     }
 
     .section {
-      padding: 16px;
+      padding: var(--section-padding);
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.42);
       border: 1px solid rgba(31, 39, 48, 0.06);
@@ -276,14 +497,14 @@
     .note-card h2,
     .line-card h2 {
       margin: 0 0 6px;
-      font-size: 18px;
+      font-size: var(--section-title-size);
       font-weight: 700;
     }
 
     .section p,
     .subtle {
       margin: 0;
-      font-size: 13px;
+      font-size: var(--subtle-size);
       color: var(--muted);
     }
 
@@ -303,7 +524,7 @@
     .control-row label {
       display: grid;
       gap: 6px;
-      font-size: 14px;
+      font-size: var(--label-size);
       color: var(--ink);
     }
 
@@ -315,7 +536,7 @@
     }
 
     .mini {
-      font-size: 12px;
+      font-size: var(--mini-size);
       color: var(--muted);
     }
 
@@ -329,6 +550,7 @@
       background: rgba(255, 255, 255, 0.94);
       color: var(--ink);
       font: inherit;
+      font-size: var(--label-size);
     }
 
     input[type="range"] {
@@ -365,18 +587,18 @@
     .poisson-item {
       display: grid;
       gap: 6px;
-      font-size: 13px;
+      font-size: var(--subtle-size);
     }
 
     .poisson-item strong {
-      font-size: 18px;
+      font-size: var(--section-title-size);
       font-family: var(--font-display);
       line-height: 1.2;
     }
 
     .poisson-item span:last-child {
       color: var(--muted);
-      font-size: 12px;
+      font-size: var(--subtle-size);
     }
 
     .totals-row {
@@ -386,7 +608,7 @@
       margin-top: 12px;
       padding-top: 12px;
       border-top: 1px dashed rgba(31, 39, 48, 0.12);
-      font-size: 13px;
+      font-size: var(--subtle-size);
       color: var(--muted);
     }
 
@@ -431,7 +653,7 @@
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.7);
       border: 1px solid rgba(31, 39, 48, 0.08);
-      font-size: 12px;
+      font-size: var(--subtle-size);
       color: var(--muted);
     }
 
@@ -445,7 +667,7 @@
 
     .probability-note {
       margin-top: 10px;
-      font-size: 12px;
+      font-size: var(--subtle-size);
       color: var(--muted);
     }
 
@@ -455,7 +677,7 @@
     }
 
     .workspace-card {
-      padding: 18px 18px 20px;
+      padding: var(--card-padding);
     }
 
     .metric-grid {
@@ -487,7 +709,7 @@
     .metric-label {
       position: relative;
       z-index: 1;
-      font-size: 13px;
+      font-size: var(--metric-label-size);
       color: var(--muted);
     }
 
@@ -495,7 +717,7 @@
       position: relative;
       z-index: 1;
       margin-top: 10px;
-      font-size: clamp(24px, 2.2vw, 34px);
+      font-size: var(--metric-value-size);
       line-height: 1.1;
       font-family: var(--font-display);
       font-weight: 700;
@@ -505,7 +727,7 @@
       position: relative;
       z-index: 1;
       margin-top: 8px;
-      font-size: 12px;
+      font-size: var(--metric-foot-size);
       color: var(--muted);
     }
 
@@ -544,8 +766,10 @@
     button {
       border: 0;
       border-radius: 999px;
+      min-height: var(--button-min-height);
       padding: 10px 16px;
       font: inherit;
+      font-size: var(--label-size);
       cursor: pointer;
       transition: transform 140ms ease, box-shadow 140ms ease, opacity 140ms ease;
     }
@@ -566,7 +790,7 @@
     }
 
     .timeline-readout {
-      font-size: 14px;
+      font-size: var(--timeline-readout-size);
       color: var(--muted);
     }
 
@@ -574,12 +798,14 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
+      align-items: stretch;
     }
 
     .matrix-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
+      align-items: stretch;
     }
 
     .matrix-wide {
@@ -590,7 +816,7 @@
     .line-card,
     .table-card,
     .note-card {
-      padding: 18px;
+      padding: var(--card-padding);
     }
 
     .chart-card header,
@@ -605,15 +831,97 @@
       margin-bottom: 10px;
     }
 
+    .compare-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .compare-card-head {
+      display: grid;
+      gap: 12px;
+      min-height: var(--compare-head-min-height);
+    }
+
+    .compare-card .compare-card-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 0;
+    }
+
+    .compare-card-copy {
+      display: grid;
+      align-content: start;
+      height: calc(var(--compare-title-min-height) + var(--compare-subtitle-min-height));
+    }
+
+    .compare-title {
+      display: flex;
+      align-items: flex-start;
+      min-height: var(--compare-title-min-height);
+      height: var(--compare-title-min-height);
+    }
+
+    .compare-subtitle {
+      display: flex;
+      align-items: flex-start;
+      min-height: var(--compare-subtitle-min-height);
+      height: var(--compare-subtitle-min-height);
+    }
+
+    .compare-note {
+      display: flex;
+      align-items: flex-start;
+      min-height: var(--compare-note-min-height);
+      height: var(--compare-note-min-height);
+      margin-bottom: 0;
+    }
+
+    .chart-visual-shell {
+      min-height: var(--compare-chart-height);
+      height: var(--compare-chart-height);
+    }
+
+    .chart-visual-shell svg,
+    .line-visual-shell svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .compare-legend {
+      min-height: var(--compare-legend-min-height);
+      height: var(--compare-legend-min-height);
+      align-content: flex-start;
+    }
+
+    .matrix-visual-shell {
+      min-height: var(--compare-matrix-height);
+      height: var(--compare-matrix-height);
+      max-height: var(--compare-matrix-height);
+      overflow: auto;
+      scrollbar-gutter: stable both-edges;
+    }
+
+    .line-visual-shell {
+      min-height: var(--line-chart-height);
+      height: var(--line-chart-height);
+    }
+
     .chart-swatch {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 6px 10px;
       border-radius: 999px;
-      font-size: 12px;
+      font-size: var(--chart-swatch-size);
       color: var(--muted);
       background: rgba(255, 255, 255, 0.55);
+    }
+
+    body[data-presentation-mode="on"] .chart-swatch {
+      padding: 8px 14px;
     }
 
     .swatch-dot {
@@ -644,8 +952,12 @@
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.58);
       border: 1px solid rgba(31, 39, 48, 0.08);
-      font-size: 12px;
+      font-size: var(--legend-size);
       color: var(--muted);
+    }
+
+    body[data-presentation-mode="on"] .legend-item {
+      padding: 8px 14px;
     }
 
     .legend-color {
@@ -660,13 +972,13 @@
 
     .matrix-note {
       margin-bottom: 10px;
-      font-size: 12px;
+      font-size: var(--matrix-note-size);
       color: var(--muted);
     }
 
     .matrix-table {
       min-width: 760px;
-      font-size: 12px;
+      font-size: var(--matrix-font-size);
     }
 
     .matrix-table th,
@@ -675,6 +987,12 @@
       padding: 10px 8px;
       text-align: center;
       border: 1px solid rgba(31, 39, 48, 0.08);
+    }
+
+    body[data-presentation-mode="on"] .matrix-table th,
+    body[data-presentation-mode="on"] .matrix-table td {
+      min-width: 88px;
+      padding: 14px 10px;
     }
 
     .matrix-table th:first-child,
@@ -688,7 +1006,7 @@
 
     .matrix-table thead th {
       background: rgba(236, 240, 245, 0.92);
-      font-size: 13px;
+      font-size: var(--matrix-head-size);
       font-weight: 700;
     }
 
@@ -700,7 +1018,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 13px;
+      font-size: var(--data-table-size);
     }
 
     th,
@@ -757,7 +1075,7 @@
 
     .formula-card h3 {
       margin: 0 0 8px;
-      font-size: 15px;
+      font-size: var(--formula-title-size);
     }
 
     .formula {
@@ -766,13 +1084,13 @@
       padding: 14px 16px;
       border-radius: 14px;
       background: rgba(31, 39, 48, 0.05);
-      font-size: 13px;
+      font-size: var(--formula-body-size);
       line-height: 1.6;
     }
 
     .latex-formula {
       display: block;
-      font-size: 26px;
+      font-size: var(--formula-display-size);
       line-height: 1.8;
       overflow-x: auto;
     }
@@ -841,7 +1159,7 @@
       border-radius: 14px;
       background: rgba(255, 255, 255, 0.6);
       border: 1px solid rgba(31, 39, 48, 0.08);
-      font-size: 13px;
+      font-size: var(--check-size);
     }
 
     .tag {
@@ -851,7 +1169,7 @@
       min-width: 52px;
       padding: 4px 8px;
       border-radius: 999px;
-      font-size: 12px;
+      font-size: var(--tag-size);
       font-weight: 700;
     }
 
@@ -867,7 +1185,7 @@
 
     .footnote {
       margin-top: 10px;
-      font-size: 12px;
+      font-size: var(--footnote-size);
       color: var(--muted);
     }
 
@@ -892,6 +1210,20 @@
       .matrix-grid,
       .notes-grid {
         grid-template-columns: 1fr;
+      }
+
+      .compare-card-head,
+      .compare-card-copy,
+      .compare-title,
+      .compare-subtitle,
+      .compare-note,
+      .compare-legend,
+      .chart-visual-shell,
+      .matrix-visual-shell,
+      .line-visual-shell {
+        min-height: 0;
+        max-height: none;
+        height: auto;
       }
 
       .latex-formula {
@@ -924,6 +1256,7 @@
       }
 
       .hero-actions,
+      .hero-toolbar,
       .hero-note-grid {
         margin-top: 18px;
       }
@@ -958,6 +1291,10 @@
         width: 100%;
       }
 
+      .presentation-toggle {
+        width: 100%;
+      }
+
       .latex-formula {
         font-size: 19px;
       }
@@ -969,15 +1306,29 @@
     <header class="hero">
       <div class="eyebrow">中国商业车险 · NCD 思想实验模拟</div>
       <h1>智能网联车 NCD 豁免思想实验模拟</h1>
-      <p>
+      <p id="heroDescription">
         用年度马尔可夫转移矩阵对比“基线 NCD 续保口径”和“责任事故可豁免 1 次”的简化方案，
         观察不同假设下的等级分布演化。页面默认采用封闭续保群假设，所有参数均可在本地离线调节并即时重算。
       </p>
       <div class="pill-row">
+        <span class="pill" id="regionPill">地区：北京厦门</span>
         <span class="pill">封闭续保群</span>
         <span class="pill">年度责任赔次服从泊松分布</span>
         <span class="pill">λ 与 F 口径一致</span>
-        <span class="pill">每保单期最多豁免 1 次</span>
+        <span class="pill" id="minLevelPill">最低等级 -5</span>
+        <span class="pill" id="exemptionPolicyPill">每保单期最多豁免 1 次</span>
+      </div>
+      <div class="hero-toolbar">
+        <label class="presentation-toggle" for="presentationModeToggle">
+          <span class="presentation-toggle-copy">
+            <span class="presentation-toggle-title">演讲模式</span>
+            <span class="presentation-toggle-note">放大字号并锁定左右对比卡的观测基线，适合大屏现场演示。</span>
+          </span>
+          <span class="presentation-toggle-control">
+            <input id="presentationModeToggle" type="checkbox" aria-label="切换演讲模式">
+            <span class="presentation-toggle-track"></span>
+          </span>
+        </label>
       </div>
       <div class="hero-actions">
         <a class="hero-link hero-link-primary" href="./math_model.md">查看建模说明</a>
@@ -1006,6 +1357,19 @@
           <h2>核心参数</h2>
           <p>默认采用当前页面设定的简化 NCD 假设。修改后会立即更新图表和结果。</p>
           <div class="control-group">
+            <div class="control-row">
+              <label for="regionSelect">
+                <span class="label-line">
+                  <span>地区</span>
+                  <span class="mini">决定 NCD 最低等级</span>
+                </span>
+              </label>
+              <select id="regionSelect">
+                <option value="beijing_xiamen" selected>北京厦门</option>
+                <option value="non_beijing_xiamen">非北京厦门</option>
+              </select>
+            </div>
+
             <div class="control-row">
               <div class="duo-input">
                 <label for="roundsRange">
@@ -1052,6 +1416,22 @@
                 <span class="hide-mobile">百分比</span>
                 <input id="exemptionInput" type="number" min="0" max="100" step="0.001" value="0.1">
               </label>
+            </div>
+
+            <div class="control-row">
+              <label for="maxExemptionsSelect">
+                <span class="label-line">
+                  <span>自动驾驶 NCD 豁免上限</span>
+                  <span class="mini">实际豁免次数不超过当年出险次数</span>
+                </span>
+              </label>
+              <select id="maxExemptionsSelect">
+                <option value="0">0</option>
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
             </div>
 
             <div class="control-row">
@@ -1151,7 +1531,7 @@
             <article class="metric-card">
               <div class="metric-label">豁免平均 NCD 系数</div>
               <div class="metric-value" id="exemptCoeffValue">0.0000</div>
-              <div class="metric-foot">思想实验方案：责任事故可豁免 1 次</div>
+              <div class="metric-foot" id="exemptCoeffFoot">思想实验方案：责任事故可豁免 1 次</div>
             </article>
             <article class="metric-card">
               <div class="metric-label">保费影响比</div>
@@ -1166,7 +1546,7 @@
             <article class="metric-card">
               <div class="metric-label">优待档净增车辆数</div>
               <div class="metric-value" id="benefitVehicleValue">0</div>
-              <div class="metric-foot">统计等级 -4 至 0 的净变化</div>
+              <div class="metric-foot" id="benefitVehicleFoot">统计等级 -5 至 0 的净变化</div>
             </article>
             <article class="metric-card">
               <div class="metric-label">最大改善轮次</div>
@@ -1198,54 +1578,66 @@
         </section>
 
         <div class="chart-grid">
-          <article class="chart-card">
-            <header>
-              <div>
-                <h2>基线假设分布迁移</h2>
-                <p class="subtle">用于与豁免方案对比的基准路径。</p>
-              </div>
-              <div class="chart-swatch"><span class="swatch-dot" style="background:#b8602e"></span> 基线假设</div>
-            </header>
-            <svg id="baseChart" viewBox="0 0 760 360" role="img" aria-label="基线假设NCD分布迁移图"></svg>
-            <div class="legend" id="legendBase"></div>
+          <article class="chart-card compare-card">
+            <div class="compare-card-head">
+              <header class="compare-card-header">
+                <div class="compare-card-copy">
+                  <h2 class="compare-title" id="baseChartTitle">基线假设分布迁移</h2>
+                  <p class="subtle compare-subtitle" id="baseChartSubtitle">用于与豁免方案对比的基准路径。</p>
+                </div>
+                <div class="chart-swatch"><span class="swatch-dot" style="background:#b8602e"></span> 基线假设</div>
+              </header>
+            </div>
+            <div class="chart-visual-shell">
+              <svg id="baseChart" viewBox="0 0 760 360" role="img" aria-label="基线假设NCD分布迁移图"></svg>
+            </div>
+            <div class="legend compare-legend" id="legendBase"></div>
           </article>
 
-          <article class="chart-card">
-            <header>
-              <div>
-                <h2>豁免方案分布迁移</h2>
-                <p class="subtle">思想实验方案：责任事故每保单期至多豁免 1 次。</p>
-              </div>
-              <div class="chart-swatch"><span class="swatch-dot" style="background:#0f7b6c"></span> 豁免方案</div>
-            </header>
-            <svg id="exemptChart" viewBox="0 0 760 360" role="img" aria-label="豁免方案NCD分布迁移图"></svg>
-            <div class="legend" id="legendExempt"></div>
+          <article class="chart-card compare-card">
+            <div class="compare-card-head">
+              <header class="compare-card-header">
+                <div class="compare-card-copy">
+                  <h2 class="compare-title" id="exemptChartTitle">豁免方案分布迁移</h2>
+                  <p class="subtle compare-subtitle" id="exemptChartSubtitle">思想实验方案：责任事故每保单期至多豁免 1 次。</p>
+                </div>
+                <div class="chart-swatch"><span class="swatch-dot" style="background:#0f7b6c"></span> 豁免方案</div>
+              </header>
+            </div>
+            <div class="chart-visual-shell">
+              <svg id="exemptChart" viewBox="0 0 760 360" role="img" aria-label="豁免方案NCD分布迁移图"></svg>
+            </div>
+            <div class="legend compare-legend" id="legendExempt"></div>
           </article>
         </div>
 
         <div class="matrix-grid">
-          <article class="table-card">
-            <header>
-              <div>
-                <h2>转移矩阵（基线假设）</h2>
-                <p class="subtle">一阶转移矩阵，行表示从当前等级出发，列表示到下一期等级。</p>
-              </div>
-              <div class="chart-swatch"><span class="swatch-dot" style="background:#b8602e"></span> 概率热力</div>
-            </header>
-            <div class="matrix-note">每行求和应为 100%，颜色越深表示该转移概率越高。</div>
-            <div class="table-wrap" id="baseMatrixTable"></div>
+          <article class="table-card compare-card">
+            <div class="compare-card-head">
+              <header class="compare-card-header">
+                <div class="compare-card-copy">
+                  <h2 class="compare-title" id="baseMatrixTitle">转移矩阵（基线假设）</h2>
+                  <p class="subtle compare-subtitle" id="baseMatrixSubtitle">一阶转移矩阵，行表示从当前等级出发，列表示到下一期等级。</p>
+                </div>
+                <div class="chart-swatch"><span class="swatch-dot" style="background:#b8602e"></span> 概率热力</div>
+              </header>
+              <div class="matrix-note compare-note">每行求和应为 100%，颜色越深表示该转移概率越高。</div>
+            </div>
+            <div class="table-wrap matrix-visual-shell" id="baseMatrixTable"></div>
           </article>
 
-          <article class="table-card">
-            <header>
-              <div>
-                <h2>转移矩阵（豁免方案）</h2>
-                <p class="subtle">思想实验方案下，责任事故可豁免 1 次后的年度一阶转移矩阵。</p>
-              </div>
-              <div class="chart-swatch"><span class="swatch-dot" style="background:#0f7b6c"></span> 豁免方案</div>
-            </header>
-            <div class="matrix-note">和基线矩阵对照，可直接看出保留在低等级或迁回低等级的概率变化。</div>
-            <div class="table-wrap" id="exemptMatrixTable"></div>
+          <article class="table-card compare-card">
+            <div class="compare-card-head">
+              <header class="compare-card-header">
+                <div class="compare-card-copy">
+                  <h2 class="compare-title" id="exemptMatrixTitle">转移矩阵（豁免方案）</h2>
+                  <p class="subtle compare-subtitle" id="exemptMatrixSubtitle">思想实验方案下，责任事故可豁免 1 次后的年度一阶转移矩阵。</p>
+                </div>
+                <div class="chart-swatch"><span class="swatch-dot" style="background:#0f7b6c"></span> 豁免方案</div>
+              </header>
+              <div class="matrix-note compare-note">和基线矩阵对照，可直接看出保留在低等级或迁回低等级的概率变化。</div>
+            </div>
+            <div class="table-wrap matrix-visual-shell" id="exemptMatrixTable"></div>
           </article>
 
           <article class="table-card matrix-wide">
@@ -1269,7 +1661,9 @@
             </div>
             <div class="chart-swatch"><span class="swatch-dot" style="background:#0f7b6c"></span> 豁免改善通常表现为更低的平均系数</div>
           </header>
-          <svg id="lineChart" viewBox="0 0 1480 360" role="img" aria-label="平均NCD系数对比折线图"></svg>
+          <div class="line-visual-shell">
+            <svg id="lineChart" viewBox="0 0 1480 360" role="img" aria-label="平均NCD系数对比折线图"></svg>
+          </div>
         </article>
 
         <article class="table-card">
@@ -1305,37 +1699,11 @@
               <p class="subtle">页面内置的建模口径，便于快速核对假设。</p>
             </div>
           </header>
-          <div class="notes-grid">
-            <section class="formula-card">
-              <h3>年度等级更新</h3>
-              <div class="formula latex-formula">\[ L_{t+1} = \mathrm{clamp}(-4, 5, L_t - 1 + K_t - E_t) \]</div>
-              <p class="subtle">其中 -1 表示连续续保 1 年的自然下调，K_t 为本年度责任赔次，E_t 为是否触发 1 次豁免。</p>
-            </section>
-            <section class="formula-card">
-              <h3>基线转移矩阵</h3>
-              <div class="formula latex-formula">\[ K \sim \mathrm{Poisson}(\lambda), \quad \lambda = F \]</div>
-              <div class="formula latex-formula">\[ F = E[K] \]</div>
-              <div class="formula latex-formula formula-scroll">\[ \Pr(K=k) = e^{-F}\frac{F^k}{k!} \]</div>
-              <div class="formula latex-formula">\[ \Pr(K \ge 1) = 1 - e^{-F} \]</div>
-              <div class="formula latex-formula">\[ P_{\mathrm{base}}[i,j] = \sum_k \Pr(K=k)\cdot \mathbf{1}\{T(l_i,k)=l_j\} \]</div>
-              <div class="formula latex-formula">\[ T(l,k) = \mathrm{clamp}(-4, 5, l - 1 + k) \]</div>
-              <p class="subtle">F 用频率口径输入，35% 表示 F = 0.35，而不是“至少 1 次出险概率”。矩阵计算对 k = 0..10 精确枚举；由于等级上限为 5，k ≥ 11 的尾部概率整体并入等级 5。</p>
-            </section>
-            <section class="formula-card">
-              <h3>豁免转移矩阵</h3>
-              <div class="formula latex-formula formula-scroll">\[ P_{\mathrm{exempt}}[i,j] = \sum_k \Pr(K=k)\cdot \left[(1-r_k)\cdot \mathbf{1}\{T(l_i,k)=l_j\} + r_k\cdot \mathbf{1}\{T(l_i,k-1)=l_j\}\right] \]</div>
-              <div class="formula latex-formula">\[ r_k = 1 - (1 - e)^k \]</div>
-              <p class="subtle">r_k 表示 k 次责任赔次中至少有 1 次可豁免的概率，并限制为每保单期最多豁免 1 次。对于 k ≥ 11，豁免前后目标等级都为 5。</p>
-            </section>
-            <section class="formula-card">
-              <h3>分布与指标</h3>
-              <div class="formula latex-formula">\[ \pi_t = \pi_0 \cdot P^t \]</div>
-              <div class="formula latex-formula">\[ \text{平均等级} = \sum_l \pi_t(l)\cdot l \]</div>
-              <div class="formula latex-formula">\[ \text{平均NCD系数} = \pi_t \cdot c^{\mathsf{T}} \]</div>
-              <div class="formula latex-formula">\[ \text{保费影响比}_t = \frac{\bar{C}^{\text{含豁免}}_t}{\bar{C}^{\text{无豁免}}_t} \]</div>
-              <div class="formula latex-formula">\[ \text{等级人数} = N \cdot \pi_t \]</div>
-              <p class="subtle">比值 &lt; 100% 表示豁免降低了整体保费水平。主版本采用封闭续保群，不引入新车流入、脱保或过户影响。N 仅用于人数换算。</p>
-            </section>
+          <div class="notes-grid" id="formulaCardsRoot">
+            <section class="formula-card" id="levelFormulaCard"></section>
+            <section class="formula-card" id="baseFormulaCard"></section>
+            <section class="formula-card" id="exemptFormulaCard"></section>
+            <section class="formula-card" id="metricFormulaCard"></section>
           </div>
         </article>
       </section>
@@ -1343,27 +1711,53 @@
   </div>
 
   <script>
-    const LEVELS = [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5];
-    const COEFFICIENTS = [0.5, 0.6, 0.7, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0];
-    const LEVEL_COLORS = [
-      getCssVar("--teal-0"),
-      getCssVar("--teal-1"),
-      getCssVar("--teal-2"),
-      getCssVar("--lime-3"),
-      getCssVar("--sand-4"),
-      getCssVar("--amber-5"),
-      getCssVar("--gold-6"),
-      getCssVar("--orange-7"),
-      getCssVar("--coral-8"),
-      getCssVar("--brick-9")
-    ];
+    const REGION_SPECS = {
+      beijing_xiamen: {
+        key: "beijing_xiamen",
+        label: "北京厦门",
+        minLevel: -5,
+        levels: [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5],
+        coefficients: [0.4, 0.5, 0.6, 0.7, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0]
+      },
+      non_beijing_xiamen: {
+        key: "non_beijing_xiamen",
+        label: "非北京厦门",
+        minLevel: -4,
+        levels: [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5],
+        coefficients: [0.5, 0.6, 0.7, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0]
+      }
+    };
+
+    const DEFAULT_REGION_KEY = "beijing_xiamen";
+    const EXACT_CLAIM_COUNT_MAX = 14;
+    const TAIL_CLAIM_COUNT_START = EXACT_CLAIM_COUNT_MAX + 1;
+    const PRESENTATION_MODE_STORAGE_KEY = "ncd_presentation_mode";
+    const DEFAULT_REGION_DISTRIBUTIONS = {
+      beijing_xiamen: [0, 0.03, 0.07, 0.15, 0.20, 0.30, 0.15, 0.05, 0.03, 0.01, 0.01],
+      non_beijing_xiamen: [0.03, 0.07, 0.15, 0.20, 0.30, 0.15, 0.05, 0.03, 0.01, 0.01]
+    };
+    const LEVEL_COLOR_BY_LEVEL = new Map([
+      [-5, getCssVar("--teal-neg5")],
+      [-4, getCssVar("--teal-0")],
+      [-3, getCssVar("--teal-1")],
+      [-2, getCssVar("--teal-2")],
+      [-1, getCssVar("--lime-3")],
+      [0, getCssVar("--sand-4")],
+      [1, getCssVar("--amber-5")],
+      [2, getCssVar("--gold-6")],
+      [3, getCssVar("--orange-7")],
+      [4, getCssVar("--coral-8")],
+      [5, getCssVar("--brick-9")]
+    ]);
 
     const DEFAULT_CONFIG = {
+      region: DEFAULT_REGION_KEY,
       rounds: 10,
       population: 100000000,
       claimFrequency: 0.35,
       exemptionPerClaimProb: 0.001,
-      initialDistribution: [0.03, 0.07, 0.15, 0.20, 0.30, 0.15, 0.05, 0.03, 0.01, 0.01],
+      maxExemptions: 1,
+      regionDistributions: cloneRegionDistributions(DEFAULT_REGION_DISTRIBUTIONS),
       animationSpeed: 900,
       displayMode: "share",
       highlightDiff: true
@@ -1371,13 +1765,21 @@
 
     const state = {
       config: cloneConfig(DEFAULT_CONFIG),
+      presentationMode: loadPresentationModePreference(),
       currentRound: DEFAULT_CONFIG.rounds,
       results: null,
       validationResults: [],
-      timerId: null
+      timerId: null,
+      contextualCopyKey: ""
     };
 
     const dom = {
+      heroDescription: document.getElementById("heroDescription"),
+      regionPill: document.getElementById("regionPill"),
+      minLevelPill: document.getElementById("minLevelPill"),
+      exemptionPolicyPill: document.getElementById("exemptionPolicyPill"),
+      presentationModeToggle: document.getElementById("presentationModeToggle"),
+      regionSelect: document.getElementById("regionSelect"),
       roundsRange: document.getElementById("roundsRange"),
       roundsInput: document.getElementById("roundsInput"),
       roundsLabel: document.getElementById("roundsLabel"),
@@ -1387,6 +1789,7 @@
       exemptionRange: document.getElementById("exemptionRange"),
       exemptionInput: document.getElementById("exemptionInput"),
       exemptionLabel: document.getElementById("exemptionLabel"),
+      maxExemptionsSelect: document.getElementById("maxExemptionsSelect"),
       populationInput: document.getElementById("populationInput"),
       speedRange: document.getElementById("speedRange"),
       speedLabel: document.getElementById("speedLabel"),
@@ -1404,9 +1807,11 @@
       selectedRoundFoot: document.getElementById("selectedRoundFoot"),
       baseCoeffValue: document.getElementById("baseCoeffValue"),
       exemptCoeffValue: document.getElementById("exemptCoeffValue"),
+      exemptCoeffFoot: document.getElementById("exemptCoeffFoot"),
       premiumImpactRatioValue: document.getElementById("premiumImpactRatioValue"),
       coeffDeltaValue: document.getElementById("coeffDeltaValue"),
       benefitVehicleValue: document.getElementById("benefitVehicleValue"),
+      benefitVehicleFoot: document.getElementById("benefitVehicleFoot"),
       maxGapRoundValue: document.getElementById("maxGapRoundValue"),
       maxGapValue: document.getElementById("maxGapValue"),
       terminalGapValue: document.getElementById("terminalGapValue"),
@@ -1414,28 +1819,60 @@
       timeSlider: document.getElementById("timeSlider"),
       playButton: document.getElementById("playButton"),
       resetButton: document.getElementById("resetButton"),
+      baseChartTitle: document.getElementById("baseChartTitle"),
+      baseChartSubtitle: document.getElementById("baseChartSubtitle"),
       baseChart: document.getElementById("baseChart"),
+      exemptChartTitle: document.getElementById("exemptChartTitle"),
+      exemptChartSubtitle: document.getElementById("exemptChartSubtitle"),
       exemptChart: document.getElementById("exemptChart"),
       lineChart: document.getElementById("lineChart"),
       comparisonBody: document.getElementById("comparisonBody"),
       tableCaption: document.getElementById("tableCaption"),
+      baseMatrixTitle: document.getElementById("baseMatrixTitle"),
+      baseMatrixSubtitle: document.getElementById("baseMatrixSubtitle"),
       baseMatrixTable: document.getElementById("baseMatrixTable"),
+      exemptMatrixTitle: document.getElementById("exemptMatrixTitle"),
+      exemptMatrixSubtitle: document.getElementById("exemptMatrixSubtitle"),
       exemptMatrixTable: document.getElementById("exemptMatrixTable"),
       differenceMatrixTable: document.getElementById("differenceMatrixTable"),
       legendBase: document.getElementById("legendBase"),
-      legendExempt: document.getElementById("legendExempt")
+      legendExempt: document.getElementById("legendExempt"),
+      formulaCardsRoot: document.getElementById("formulaCardsRoot"),
+      levelFormulaCard: document.getElementById("levelFormulaCard"),
+      baseFormulaCard: document.getElementById("baseFormulaCard"),
+      exemptFormulaCard: document.getElementById("exemptFormulaCard"),
+      metricFormulaCard: document.getElementById("metricFormulaCard")
     };
 
     init();
 
     function init() {
+      applyPresentationMode(state.presentationMode);
       buildDistributionInputs();
       buildLegends();
       bindControls();
+      syncControlsFromState();
       recalculate();
     }
 
     function bindControls() {
+      dom.presentationModeToggle.addEventListener("change", () => {
+        state.presentationMode = dom.presentationModeToggle.checked;
+        persistPresentationModePreference(state.presentationMode);
+        applyPresentationMode(state.presentationMode);
+        if (state.results) {
+          renderCharts();
+        }
+      });
+
+      dom.regionSelect.addEventListener("change", () => {
+        state.config.region = getRegionSpec(dom.regionSelect.value).key;
+        stopPlayback();
+        buildDistributionInputs();
+        buildLegends();
+        recalculate();
+      });
+
       bindSyncedRangeNumber(dom.roundsRange, dom.roundsInput, (value) => {
         state.config.rounds = clampNumber(value, 0, 100, DEFAULT_CONFIG.rounds);
         state.currentRound = Math.min(state.currentRound, state.config.rounds);
@@ -1452,6 +1889,11 @@
       bindSyncedRangeNumber(dom.exemptionRange, dom.exemptionInput, (value) => {
         const percentValue = clampNumber(value, 0, 100, DEFAULT_CONFIG.exemptionPerClaimProb * 100);
         state.config.exemptionPerClaimProb = percentValue / 100;
+        recalculate();
+      });
+
+      dom.maxExemptionsSelect.addEventListener("change", () => {
+        state.config.maxExemptions = Math.round(clampNumber(dom.maxExemptionsSelect.value, 0, 4, DEFAULT_CONFIG.maxExemptions));
         recalculate();
       });
 
@@ -1495,37 +1937,43 @@
         stopPlayback();
         state.config = cloneConfig(DEFAULT_CONFIG);
         state.currentRound = DEFAULT_CONFIG.rounds;
+        buildDistributionInputs();
+        buildLegends();
         syncControlsFromState();
         recalculate();
       });
     }
 
     function buildDistributionInputs() {
-      dom.distributionGrid.innerHTML = LEVELS.map((level, index) => `
+      const regionSpec = getRegionSpec(state.config.region);
+      const editableDistribution = getEditableDistribution(state.config, regionSpec.key);
+
+      dom.distributionGrid.innerHTML = regionSpec.levels.map((level, index) => `
         <div class="dist-item">
           <label for="dist-${index}">
             <span>等级 ${formatSignedLevel(level)}</span>
-            <input id="dist-${index}" data-level-index="${index}" type="number" min="0" step="0.1" value="${(DEFAULT_CONFIG.initialDistribution[index] * 100).toFixed(1)}">
+            <input id="dist-${index}" data-level-index="${index}" type="number" min="0" step="0.1" value="${(editableDistribution[index] * 100).toFixed(1)}">
           </label>
         </div>
       `).join("");
 
       dom.distributionGrid.querySelectorAll("input").forEach((input) => {
         input.addEventListener("input", () => {
-          const next = LEVELS.map((_, index) => {
+          const next = regionSpec.levels.map((_, index) => {
             const element = dom.distributionGrid.querySelector(`#dist-${index}`);
             return Math.max(0, clampNumber(element.value, 0, 100000, 0)) / 100;
           });
-          state.config.initialDistribution = next;
+          state.config.regionDistributions[state.config.region] = next;
           recalculate();
         });
       });
     }
 
     function buildLegends() {
-      const legendMarkup = LEVELS.map((level, index) => `
+      const regionSpec = getRegionSpec(state.config.region);
+      const legendMarkup = regionSpec.levels.map((level) => `
         <span class="legend-item">
-          <span class="legend-color" style="background:${LEVEL_COLORS[index]}"></span>
+          <span class="legend-color" style="background:${getLevelColor(level)}"></span>
           NCD ${formatSignedLevel(level)}
         </span>
       `).join("");
@@ -1537,6 +1985,7 @@
       state.results = runSimulation(state.config);
       state.validationResults = buildValidationChecks(state.config, state.results);
       syncDerivedLabels();
+      renderContextualCopy();
       renderPoissonAssumptions();
       renderMatrixTables();
       renderCharts();
@@ -1544,15 +1993,22 @@
     }
 
     function runSimulation(config) {
+      const regionSpec = getRegionSpec(config.region);
       const normalizedClaimFrequency = clampNumber(config.claimFrequency, 0, 1, DEFAULT_CONFIG.claimFrequency);
       const poissonLambda = derivePoissonLambda(normalizedClaimFrequency);
       const normalizedConfig = {
+        region: regionSpec.key,
+        regionLabel: regionSpec.label,
+        minLevel: regionSpec.minLevel,
+        levels: [...regionSpec.levels],
+        coefficients: [...regionSpec.coefficients],
         rounds: Math.round(clampNumber(config.rounds, 0, 100, DEFAULT_CONFIG.rounds)),
         population: Math.max(1, Math.round(clampNumber(config.population, 1, 1000000000000, DEFAULT_CONFIG.population))),
         claimFrequency: normalizedClaimFrequency,
         poissonLambda,
         exemptionPerClaimProb: clampNumber(config.exemptionPerClaimProb, 0, 1, DEFAULT_CONFIG.exemptionPerClaimProb),
-        initialDistribution: normalizeDistribution(config),
+        maxExemptions: Math.round(clampNumber(config.maxExemptions, 0, 4, DEFAULT_CONFIG.maxExemptions)),
+        initialDistribution: normalizeDistribution(config, regionSpec),
         animationSpeed: Math.round(clampNumber(config.animationSpeed, 240, 1800, DEFAULT_CONFIG.animationSpeed)),
         displayMode: config.displayMode === "count" ? "count" : "share",
         highlightDiff: Boolean(config.highlightDiff)
@@ -1564,8 +2020,8 @@
       const differenceMatrix = buildDifferenceMatrix(exemptMatrix, baseMatrix);
       const baseSeries = projectDistribution(baseMatrix, normalizedConfig.initialDistribution, normalizedConfig.rounds);
       const exemptSeries = projectDistribution(exemptMatrix, normalizedConfig.initialDistribution, normalizedConfig.rounds);
-      const baseMetrics = calculateSummaryMetrics(baseSeries, COEFFICIENTS, normalizedConfig.population);
-      const exemptMetrics = calculateSummaryMetrics(exemptSeries, COEFFICIENTS, normalizedConfig.population);
+      const baseMetrics = calculateSummaryMetrics(baseSeries, normalizedConfig.levels, normalizedConfig.coefficients, normalizedConfig.population);
+      const exemptMetrics = calculateSummaryMetrics(exemptSeries, normalizedConfig.levels, normalizedConfig.coefficients, normalizedConfig.population);
       const gapSeries = baseMetrics.map((item, index) => item.avgCoeff - exemptMetrics[index].avgCoeff);
       const maxCoeffGap = Math.max(...gapSeries);
       const maxCoeffGapRound = gapSeries.indexOf(maxCoeffGap);
@@ -1589,15 +2045,15 @@
       };
     }
 
-    function normalizeDistribution(config) {
-      const raw = Array.isArray(config.initialDistribution) ? config.initialDistribution : DEFAULT_CONFIG.initialDistribution;
-      const cleaned = LEVELS.map((_, index) => {
+    function normalizeDistribution(config, regionSpec) {
+      const raw = getEditableDistribution(config, regionSpec.key);
+      const cleaned = regionSpec.levels.map((_, index) => {
         const value = Number(raw[index]);
         return Number.isFinite(value) && value >= 0 ? value : 0;
       });
       const total = cleaned.reduce((sum, value) => sum + value, 0);
       if (total <= 0) {
-        return cloneConfig(DEFAULT_CONFIG).initialDistribution;
+        return [...DEFAULT_REGION_DISTRIBUTIONS[regionSpec.key]];
       }
       return cleaned.map((value) => value / total);
     }
@@ -1615,14 +2071,14 @@
       probabilities.push({ k: 0, probability: currentProbability, isTail: false });
       runningTotal += currentProbability;
 
-      for (let k = 1; k <= 10; k += 1) {
+      for (let k = 1; k <= EXACT_CLAIM_COUNT_MAX; k += 1) {
         currentProbability = currentProbability * lambda / k;
         runningTotal += currentProbability;
         probabilities.push({ k, probability: currentProbability, isTail: false });
       }
 
       probabilities.push({
-        k: 11,
+        k: TAIL_CLAIM_COUNT_START,
         probability: Math.max(0, 1 - runningTotal),
         isTail: true
       });
@@ -1632,16 +2088,16 @@
 
     function buildTransitionMatrixBase(config) {
       const claimProbabilities = config.claimProbabilities || buildPoissonClaimProbabilities(config);
-      const maxLevelIndex = levelIndex(5);
-      return LEVELS.map((level) => {
-        const row = createZeroVector();
+      const maxLevelIndex = levelIndex(config.levels, 5);
+      return config.levels.map((level) => {
+        const row = createZeroVector(config.levels.length);
         claimProbabilities.forEach(({ k, probability, isTail }) => {
-          const nextLevel = isTail ? 5 : transitionLevel(level, k);
+          const nextLevel = isTail ? 5 : transitionLevel(level, k, 0, config.minLevel);
           if (isTail) {
             row[maxLevelIndex] += probability;
             return;
           }
-          row[levelIndex(nextLevel)] += probability;
+          row[levelIndex(config.levels, nextLevel)] += probability;
         });
         return normalizeRow(row);
       });
@@ -1649,17 +2105,19 @@
 
     function buildTransitionMatrixExempt(config) {
       const claimProbabilities = config.claimProbabilities || buildPoissonClaimProbabilities(config);
-      const maxLevelIndex = levelIndex(5);
-      return LEVELS.map((level) => {
-        const row = createZeroVector();
+      const maxLevelIndex = levelIndex(config.levels, 5);
+      return config.levels.map((level) => {
+        const row = createZeroVector(config.levels.length);
         claimProbabilities.forEach(({ k, probability, isTail }) => {
           if (isTail) {
             row[maxLevelIndex] += probability;
             return;
           }
-          const { exemptionChance, standardTarget, exemptTarget } = getExemptionTransition(level, k, config.exemptionPerClaimProb);
-          row[levelIndex(standardTarget)] += probability * (1 - exemptionChance);
-          row[levelIndex(exemptTarget)] += probability * exemptionChance;
+          const outcomes = buildExemptionOutcomeProbabilities(k, config.exemptionPerClaimProb, config.maxExemptions);
+          outcomes.forEach((outcome) => {
+            const target = transitionLevel(level, k, outcome.exemptions, config.minLevel);
+            row[levelIndex(config.levels, target)] += probability * outcome.probability;
+          });
         });
         return normalizeRow(row);
       });
@@ -1669,22 +2127,38 @@
       return exemptMatrix.map((row, rowIndex) => row.map((value, columnIndex) => value - baseMatrix[rowIndex][columnIndex]));
     }
 
-    function getExemptionTransition(level, claimCount, exemptionPerClaimProb) {
-      const exemptionChance = claimCount === 0 ? 0 : 1 - Math.pow(1 - exemptionPerClaimProb, claimCount);
-      return {
-        exemptionChance,
-        standardTarget: transitionLevel(level, claimCount),
-        exemptTarget: transitionLevel(level, Math.max(0, claimCount - 1))
-      };
+    function buildExemptionOutcomeProbabilities(claimCount, exemptionPerClaimProb, maxExemptions) {
+      if (claimCount === 0 || maxExemptions === 0) {
+        return [{ exemptions: 0, probability: 1 }];
+      }
+
+      const cappedExemptions = Math.min(claimCount, maxExemptions);
+      const outcomes = [];
+      let assignedProbability = 0;
+
+      for (let exemptions = 0; exemptions < cappedExemptions; exemptions += 1) {
+        const probability = binomialProbability(claimCount, exemptions, exemptionPerClaimProb);
+        assignedProbability += probability;
+        if (probability > 0) {
+          outcomes.push({ exemptions, probability });
+        }
+      }
+
+      const cappedProbability = Math.max(0, 1 - assignedProbability);
+      if (cappedProbability > 0 || outcomes.length === 0) {
+        outcomes.push({ exemptions: cappedExemptions, probability: cappedProbability });
+      }
+
+      return outcomes;
     }
 
     function projectDistribution(matrix, initial, rounds) {
       const series = [normalizeRow([...initial])];
       for (let step = 0; step < rounds; step += 1) {
         const previous = series[series.length - 1];
-        const next = createZeroVector();
-        for (let i = 0; i < LEVELS.length; i += 1) {
-          for (let j = 0; j < LEVELS.length; j += 1) {
+        const next = createZeroVector(previous.length);
+        for (let i = 0; i < previous.length; i += 1) {
+          for (let j = 0; j < previous.length; j += 1) {
             next[j] += previous[i] * matrix[i][j];
           }
         }
@@ -1693,9 +2167,9 @@
       return series;
     }
 
-    function calculateSummaryMetrics(distributionSeries, coeffs, population) {
+    function calculateSummaryMetrics(distributionSeries, levels, coeffs, population) {
       return distributionSeries.map((distribution) => {
-        const avgLevel = distribution.reduce((sum, share, index) => sum + share * LEVELS[index], 0);
+        const avgLevel = distribution.reduce((sum, share, index) => sum + share * levels[index], 0);
         const avgCoeff = distribution.reduce((sum, share, index) => sum + share * coeffs[index], 0);
         const counts = distribution.map((share) => share * population);
         return {
@@ -1703,7 +2177,7 @@
           avgLevel,
           avgCoeff,
           counts,
-          preferredBucketCount: counts.slice(0, 5).reduce((sum, value) => sum + value, 0)
+          preferredBucketCount: counts.reduce((sum, value, index) => sum + (levels[index] <= 0 ? value : 0), 0)
         };
       });
     }
@@ -1714,11 +2188,13 @@
       const midMass = claimProbabilities
         .filter((item) => !item.isTail && item.k >= 6 && item.k <= 10)
         .reduce((sum, item) => sum + item.probability, 0);
-      const tailMass = claimProbabilities.find((item) => item.isTail)?.probability ?? 0;
+      const tailMass = claimProbabilities
+        .filter((item) => item.isTail || item.k >= 11)
+        .reduce((sum, item) => sum + item.probability, 0);
 
       dom.frequencyValue.textContent = `F = ${(config.claimFrequency * 100).toFixed(1)}%`;
       dom.lambdaValue.textContent = `λ = ${formatLambda(config.poissonLambda)}`;
-      dom.poissonClampNote.textContent = "这里 F 用百分比录入，但模型内部按小数处理，例如 35% 对应 F = 0.35。矩阵对 k = 0..10 精确枚举，并把 k >= 11 的尾部概率整体并入等级 5。";
+      dom.poissonClampNote.textContent = `这里 F 用百分比录入，但模型内部按小数处理，例如 35% 对应 F = 0.35。为兼容 ${config.regionLabel} 地区的最低等级 ${formatSignedLevel(config.minLevel)} 以及每保单期最多 ${config.maxExemptions} 次豁免，矩阵对 k = 0..${EXACT_CLAIM_COUNT_MAX} 精确枚举，并把 k >= ${TAIL_CLAIM_COUNT_START} 的尾部概率整体并入等级 5。`;
 
       const previewItems = [
         { label: "P(K = 0)", probability: probabilityByK.get(0) ?? 0, note: "无责任赔次" },
@@ -1740,6 +2216,81 @@
       `).join("");
     }
 
+    function renderContextualCopy() {
+      const { config } = state.results;
+      const copyKey = `${config.region}|${config.maxExemptions}`;
+      if (state.contextualCopyKey === copyKey) {
+        return;
+      }
+      state.contextualCopyKey = copyKey;
+
+      const exemptionLabel = getExemptionPolicyLabel(config.maxExemptions);
+      const exemptionPlanDescription = getExemptionPlanDescription(config.maxExemptions);
+      const baseMatrixRows = config.levels.length;
+
+      dom.heroDescription.textContent = `用年度马尔可夫转移矩阵对比“基线 NCD 续保口径”和“${exemptionPlanDescription}”的简化方案，观察不同假设下的等级分布演化。页面默认采用封闭续保群假设，所有参数均可在本地离线调节并即时重算。`;
+      dom.regionPill.textContent = `地区：${config.regionLabel}`;
+      dom.minLevelPill.textContent = `最低等级 ${formatSignedLevel(config.minLevel)}`;
+      dom.exemptionPolicyPill.textContent = exemptionLabel;
+      dom.exemptCoeffFoot.textContent = `思想实验方案：${exemptionPlanDescription}`;
+      dom.benefitVehicleFoot.textContent = `统计等级 ${formatSignedLevel(config.minLevel)} 至 0 的净变化`;
+      dom.baseChartTitle.textContent = `基线假设分布迁移（${config.regionLabel}）`;
+      dom.baseChartSubtitle.textContent = `当前地区下界为 ${formatSignedLevel(config.minLevel)}，用于与豁免方案对比的基准路径。`;
+      dom.exemptChartTitle.textContent = `豁免方案分布迁移（${config.regionLabel}）`;
+      dom.exemptChartSubtitle.textContent = config.maxExemptions === 0
+        ? "当前参数下不设置自动驾驶责任事故豁免，因此应与基线假设保持一致。"
+        : `思想实验方案：责任事故每保单期最多豁免 ${config.maxExemptions} 次，实际豁免次数不超过当年出险次数。`;
+      dom.baseMatrixTitle.textContent = `转移矩阵（基线假设，${config.regionLabel}）`;
+      dom.baseMatrixSubtitle.textContent = `当前矩阵维度为 ${baseMatrixRows} × ${baseMatrixRows}，行表示从当前等级出发，列表示到下一期等级。`;
+      dom.exemptMatrixTitle.textContent = `转移矩阵（豁免方案，${config.regionLabel}）`;
+      dom.exemptMatrixSubtitle.textContent = config.maxExemptions === 0
+        ? "当前参数下不设置自动驾驶豁免，因此这组转移矩阵应与基线假设一致。"
+        : `当前上限 M = ${config.maxExemptions}，用来刻画多次自动驾驶责任事故的截断二项豁免。`;
+
+      renderFormulaCards(config);
+    }
+
+    function renderFormulaCards(config) {
+      dom.levelFormulaCard.innerHTML = `
+        <h3>年度等级更新</h3>
+        <div class="formula latex-formula">\\[ L_{t+1} = \\mathrm{clamp}(L_t - 1 + K_t - A_t, ${config.minLevel}, 5) \\]</div>
+        <p class="subtle">当前地区为${config.regionLabel}，因此下界为 ${formatSignedLevel(config.minLevel)}。其中 -1 表示连续续保 1 年的自然下调，A_t 为实际享受的自动驾驶豁免次数。</p>
+      `;
+
+      dom.baseFormulaCard.innerHTML = `
+        <h3>基线转移矩阵</h3>
+        <div class="formula latex-formula">\\[ K \\sim \\mathrm{Poisson}(\\lambda), \\quad \\lambda = F \\]</div>
+        <div class="formula latex-formula">\\[ F = E[K] \\]</div>
+        <div class="formula latex-formula formula-scroll">\\[ \\Pr(K=k) = e^{-F}\\frac{F^k}{k!} \\]</div>
+        <div class="formula latex-formula">\\[ P_{\\mathrm{base}}[i,j] = \\sum_k \\Pr(K=k)\\cdot \\mathbf{1}\\{T_{\\mathrm{base}}(l_i,k)=l_j\\} \\]</div>
+        <div class="formula latex-formula">\\[ T_{\\mathrm{base}}(l,k)=\\mathrm{clamp}(l - 1 + k, ${config.minLevel}, 5) \\]</div>
+        <p class="subtle">F 用频率口径输入，35% 表示 F = 0.35，而不是“至少 1 次出险概率”。矩阵对 k = 0..${EXACT_CLAIM_COUNT_MAX} 精确枚举，并把 k &ge; ${TAIL_CLAIM_COUNT_START} 的尾部概率整体并入等级 5。</p>
+      `;
+
+      dom.exemptFormulaCard.innerHTML = `
+        <h3>豁免转移矩阵</h3>
+        <div class="formula latex-formula">\\[ X_t \\mid K_t=k \\sim \\mathrm{Binomial}(k, p), \\qquad A_t = \\min(X_t, ${config.maxExemptions}) \\]</div>
+        <div class="formula latex-formula formula-scroll">\\[ P_{\\mathrm{exempt}}[i,j] = \\sum_k \\Pr(K=k) \\sum_{a=0}^{\\min(k, ${config.maxExemptions})} \\Pr(A_t=a \\mid K_t=k, ${config.maxExemptions})\\cdot \\mathbf{1}\\{T_{\\mathrm{ex}}(l_i,k,a)=l_j\\} \\]</div>
+        <div class="formula latex-formula">\\[ T_{\\mathrm{ex}}(l,k,a)=\\mathrm{clamp}(l - 1 + k - a, ${config.minLevel}, 5) \\]</div>
+        <div class="formula latex-formula formula-scroll">\\[ \\Pr(A_t=a \\mid K_t=k, M)=\\begin{cases}\\Pr(X_t=a), & 0 \\le a < \\min(k, M) \\\\ \\Pr(X_t \\ge M), & a = M < k \\\\ \\Pr(X_t = k), & a = k \\le M \\end{cases} \\]</div>
+        <p class="subtle">当前豁免上限 M = ${config.maxExemptions}。当 M = 0 时，模型退化为基线假设；当 M = 1 时，退化为旧版“最多豁免 1 次”的单次豁免模型。</p>
+      `;
+
+      dom.metricFormulaCard.innerHTML = `
+        <h3>分布与指标</h3>
+        <div class="formula latex-formula">\\[ \\pi_t = \\pi_0 \\cdot P^t \\]</div>
+        <div class="formula latex-formula">\\[ \\text{平均等级} = \\sum_l \\pi_t(l)\\cdot l \\]</div>
+        <div class="formula latex-formula">\\[ \\text{平均NCD系数} = \\pi_t \\cdot c^{\\mathsf{T}} \\]</div>
+        <div class="formula latex-formula">\\[ \\text{保费影响比}_t = \\frac{\\bar{C}^{\\text{含豁免}}_t}{\\bar{C}^{\\text{无豁免}}_t} \\]</div>
+        <div class="formula latex-formula">\\[ \\text{等级人数} = N \\cdot \\pi_t \\]</div>
+        <p class="subtle">当前优待档口径为所有小于等于 0 的等级，即 ${formatSignedLevel(config.minLevel)} 至 0。比值 &lt; 100% 表示豁免降低了整体保费水平。</p>
+      `;
+
+      if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Queue) {
+        window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, dom.formulaCardsRoot]);
+      }
+    }
+
     function renderMatrixTables() {
       renderProbabilityMatrix(dom.baseMatrixTable, state.results.baseMatrix, false);
       renderProbabilityMatrix(dom.exemptMatrixTable, state.results.exemptMatrix, true);
@@ -1747,6 +2298,7 @@
     }
 
     function renderProbabilityMatrix(container, matrix, isExempt) {
+      const levels = state.results.config.levels;
       const maxValue = Math.max(...matrix.flat(), 0.000001);
       const accent = isExempt ? [15, 123, 108] : [184, 96, 46];
       container.innerHTML = `
@@ -1754,13 +2306,13 @@
           <thead>
             <tr>
               <th>从 \\ 到</th>
-              ${LEVELS.map((level) => `<th>${formatSignedLevel(level)}</th>`).join("")}
+              ${levels.map((level) => `<th>${formatSignedLevel(level)}</th>`).join("")}
             </tr>
           </thead>
           <tbody>
             ${matrix.map((row, rowIndex) => `
               <tr>
-                <th>${formatSignedLevel(LEVELS[rowIndex])}</th>
+                <th>${formatSignedLevel(levels[rowIndex])}</th>
                 ${row.map((value) => {
                   const intensity = value / maxValue;
                   const alpha = Math.min(0.92, 0.06 + intensity * 0.84);
@@ -1775,19 +2327,20 @@
     }
 
     function renderDifferenceMatrix(container, matrix) {
+      const levels = state.results.config.levels;
       const maxAbs = Math.max(...matrix.flat().map((value) => Math.abs(value)), 0.000001);
       container.innerHTML = `
         <table class="matrix-table">
           <thead>
             <tr>
               <th>从 \\ 到</th>
-              ${LEVELS.map((level) => `<th>${formatSignedLevel(level)}</th>`).join("")}
+              ${levels.map((level) => `<th>${formatSignedLevel(level)}</th>`).join("")}
             </tr>
           </thead>
           <tbody>
             ${matrix.map((row, rowIndex) => `
               <tr>
-                <th>${formatSignedLevel(LEVELS[rowIndex])}</th>
+                <th>${formatSignedLevel(levels[rowIndex])}</th>
                 ${row.map((value) => {
                   const intensity = Math.abs(value) / maxAbs;
                   const alpha = Math.min(0.86, intensity * 0.74);
@@ -1821,9 +2374,13 @@
     }
 
     function renderScenarioChart(svg, metricsSeries, currentRound, displayMode, accentColor) {
+      const presentationMode = state.presentationMode;
+      const levels = state.results.config.levels;
       const width = 760;
-      const height = 360;
-      const margin = { top: 30, right: 18, bottom: 44, left: 62 };
+      const height = presentationMode ? 430 : 360;
+      const margin = presentationMode
+        ? { top: 34, right: 22, bottom: 60, left: 74 }
+        : { top: 30, right: 18, bottom: 44, left: 62 };
       const innerWidth = width - margin.left - margin.right;
       const innerHeight = height - margin.top - margin.bottom;
       const totalSteps = metricsSeries.length;
@@ -1831,6 +2388,11 @@
       const barWidth = Math.min(36, Math.max(14, stepWidth * 0.72));
       const yTicks = 4;
       const totalPopulation = state.results.config.population;
+      const axisFontSize = presentationMode ? 15 : 11;
+      const labelFontSize = presentationMode ? 16 : 11;
+      const currentRoundStroke = presentationMode ? 3.6 : 2.6;
+
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
 
       let markup = "";
       for (let tick = 0; tick <= yTicks; tick += 1) {
@@ -1841,7 +2403,7 @@
           : formatPercent(ratio, 0);
         markup += `
           <line x1="${margin.left}" y1="${y}" x2="${width - margin.right}" y2="${y}" stroke="${getCssVar("--chart-grid")}" stroke-width="1"/>
-          <text x="${margin.left - 12}" y="${y + 4}" text-anchor="end" font-size="11" fill="${getCssVar("--muted")}">${label}</text>
+          <text x="${margin.left - 12}" y="${y + 5}" text-anchor="end" font-size="${axisFontSize}" fill="${getCssVar("--muted")}">${label}</text>
         `;
       }
 
@@ -1852,21 +2414,21 @@
           const segmentHeight = share * innerHeight;
           yCursor -= segmentHeight;
           markup += `
-            <rect x="${x}" y="${yCursor}" width="${barWidth}" height="${Math.max(segmentHeight, 0)}" fill="${LEVEL_COLORS[levelIndexValue]}">
-              <title>第 ${step} 轮 · 等级 ${formatSignedLevel(LEVELS[levelIndexValue])} · ${formatPercent(share, 2)}</title>
+            <rect x="${x}" y="${yCursor}" width="${barWidth}" height="${Math.max(segmentHeight, 0)}" fill="${getLevelColor(levels[levelIndexValue])}">
+              <title>第 ${step} 轮 · 等级 ${formatSignedLevel(levels[levelIndexValue])} · ${formatPercent(share, 2)}</title>
             </rect>
           `;
         });
 
         if (step === currentRound) {
           markup += `
-            <rect x="${x - 4}" y="${margin.top - 6}" width="${barWidth + 8}" height="${innerHeight + 12}" fill="none" stroke="${accentColor}" stroke-width="2.6" rx="10"/>
+            <rect x="${x - 4}" y="${margin.top - 6}" width="${barWidth + 8}" height="${innerHeight + 12}" fill="none" stroke="${accentColor}" stroke-width="${currentRoundStroke}" rx="10"/>
           `;
         }
 
         if (totalSteps <= 11 || step === 0 || step === totalSteps - 1 || step % Math.ceil(totalSteps / 6) === 0) {
           markup += `
-            <text x="${x + barWidth / 2}" y="${height - 14}" text-anchor="middle" font-size="11" fill="${getCssVar("--muted")}">${step}</text>
+            <text x="${x + barWidth / 2}" y="${height - 16}" text-anchor="middle" font-size="${axisFontSize}" fill="${getCssVar("--muted")}">${step}</text>
           `;
         }
       });
@@ -1874,17 +2436,20 @@
       markup += `
         <line x1="${margin.left}" y1="${margin.top + innerHeight}" x2="${width - margin.right}" y2="${margin.top + innerHeight}" stroke="${getCssVar("--ink")}" stroke-width="1.2"/>
         <line x1="${margin.left}" y1="${margin.top}" x2="${margin.left}" y2="${margin.top + innerHeight}" stroke="${getCssVar("--ink")}" stroke-width="1.2"/>
-        <text x="${margin.left}" y="${height - 4}" text-anchor="start" font-size="11" fill="${getCssVar("--muted")}">保单续保轮次</text>
-        <text x="${margin.left}" y="${margin.top - 12}" text-anchor="start" font-size="11" fill="${getCssVar("--muted")}">${displayMode === "count" ? "车辆数" : "等级占比"}</text>
+        <text x="${margin.left}" y="${height - 4}" text-anchor="start" font-size="${labelFontSize}" fill="${getCssVar("--muted")}">保单续保轮次</text>
+        <text x="${margin.left}" y="${margin.top - 14}" text-anchor="start" font-size="${labelFontSize}" fill="${getCssVar("--muted")}">${displayMode === "count" ? "车辆数" : "等级占比"}</text>
       `;
 
       svg.innerHTML = markup;
     }
 
     function renderLineChart(svg, baseMetrics, exemptMetrics, currentRound) {
+      const presentationMode = state.presentationMode;
       const width = 1480;
-      const height = 360;
-      const margin = { top: 26, right: 20, bottom: 42, left: 60 };
+      const height = presentationMode ? 430 : 360;
+      const margin = presentationMode
+        ? { top: 30, right: 24, bottom: 56, left: 74 }
+        : { top: 26, right: 20, bottom: 42, left: 60 };
       const innerWidth = width - margin.left - margin.right;
       const innerHeight = height - margin.top - margin.bottom;
       const rounds = baseMetrics.length - 1;
@@ -1907,6 +2472,20 @@
       const gapAnchor = gapRound >= rounds * 0.72 ? "end" : "start";
       const gapLabelX = gapAnchor === "end" ? gapX - 12 : gapX + 12;
       const gapLabelY = Math.max(margin.top + 20, Math.min(gapExemptY - 18, margin.top + 64));
+      const axisFontSize = presentationMode ? 17 : 14;
+      const labelFontSize = presentationMode ? 18 : 14;
+      const legendFontSize = presentationMode ? 16 : 13;
+      const annotationFontSize = presentationMode ? 16 : 13;
+      const annotationSubFontSize = presentationMode ? 15 : 12;
+      const pointRadius = presentationMode ? 7.2 : 5.5;
+      const focusPointRadius = presentationMode ? 7.6 : 6;
+      const currentStrokeWidth = presentationMode ? 2.1 : 1.5;
+      const gapStrokeWidth = presentationMode ? 1.8 : 1.4;
+      const pathStrokeWidth = presentationMode ? 3.8 : 3.2;
+      const secondLegendOffset = presentationMode ? 40 : 34;
+      const annotationSubOffset = presentationMode ? 22 : 18;
+
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
 
       let markup = "";
       for (let tick = 0; tick <= 4; tick += 1) {
@@ -1914,40 +2493,40 @@
         const y = yForValue(value);
         markup += `
           <line x1="${margin.left}" y1="${y}" x2="${width - margin.right}" y2="${y}" stroke="${getCssVar("--chart-grid")}" stroke-width="1"/>
-          <text x="${margin.left - 10}" y="${y + 5}" text-anchor="end" font-size="14" fill="${getCssVar("--muted")}">${value.toFixed(3)}</text>
+          <text x="${margin.left - 10}" y="${y + 5}" text-anchor="end" font-size="${axisFontSize}" fill="${getCssVar("--muted")}">${value.toFixed(3)}</text>
         `;
       }
 
       for (let round = 0; round <= rounds; round += 1) {
         if (rounds <= 10 || round === 0 || round === rounds || round % Math.ceil(rounds / 6) === 0) {
           markup += `
-            <text x="${xForRound(round)}" y="${height - 12}" text-anchor="middle" font-size="14" fill="${getCssVar("--muted")}">${round}</text>
+            <text x="${xForRound(round)}" y="${height - 14}" text-anchor="middle" font-size="${axisFontSize}" fill="${getCssVar("--muted")}">${round}</text>
           `;
         }
       }
 
       markup += `
-        <path d="${buildPath(baseMetrics)}" fill="none" stroke="#b8602e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="${buildPath(exemptMetrics)}" fill="none" stroke="#0f7b6c" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="${buildPath(baseMetrics)}" fill="none" stroke="#b8602e" stroke-width="${pathStrokeWidth}" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="${buildPath(exemptMetrics)}" fill="none" stroke="#0f7b6c" stroke-width="${pathStrokeWidth}" stroke-linecap="round" stroke-linejoin="round"/>
         ${currentIsGapRound
-          ? `<line x1="${currentX}" y1="${margin.top}" x2="${currentX}" y2="${margin.top + innerHeight}" stroke="#0f7b6c" stroke-dasharray="8 6" stroke-width="1.6" opacity="0.88"/>`
-          : `<line x1="${currentX}" y1="${margin.top}" x2="${currentX}" y2="${margin.top + innerHeight}" stroke="${getCssVar("--muted")}" stroke-dasharray="8 6" stroke-width="1.5"/>`}
-        ${currentIsGapRound ? "" : `<line x1="${gapX}" y1="${margin.top}" x2="${gapX}" y2="${margin.top + innerHeight}" stroke="#0f7b6c" stroke-dasharray="5 5" stroke-width="1.4" opacity="0.85"/>`}
-        <line x1="${gapX}" y1="${gapBaseY}" x2="${gapX}" y2="${gapExemptY}" stroke="#0f7b6c" stroke-width="2.2" opacity="0.5"/>
+          ? `<line x1="${currentX}" y1="${margin.top}" x2="${currentX}" y2="${margin.top + innerHeight}" stroke="#0f7b6c" stroke-dasharray="8 6" stroke-width="${currentStrokeWidth + 0.3}" opacity="0.88"/>`
+          : `<line x1="${currentX}" y1="${margin.top}" x2="${currentX}" y2="${margin.top + innerHeight}" stroke="${getCssVar("--muted")}" stroke-dasharray="8 6" stroke-width="${currentStrokeWidth}"/>`}
+        ${currentIsGapRound ? "" : `<line x1="${gapX}" y1="${margin.top}" x2="${gapX}" y2="${margin.top + innerHeight}" stroke="#0f7b6c" stroke-dasharray="5 5" stroke-width="${gapStrokeWidth}" opacity="0.85"/>`}
+        <line x1="${gapX}" y1="${gapBaseY}" x2="${gapX}" y2="${gapExemptY}" stroke="#0f7b6c" stroke-width="${presentationMode ? 2.8 : 2.2}" opacity="0.5"/>
         <line x1="${margin.left}" y1="${margin.top + innerHeight}" x2="${width - margin.right}" y2="${margin.top + innerHeight}" stroke="${getCssVar("--ink")}" stroke-width="1.2"/>
         <line x1="${margin.left}" y1="${margin.top}" x2="${margin.left}" y2="${margin.top + innerHeight}" stroke="${getCssVar("--ink")}" stroke-width="1.2"/>
-        <text x="${margin.left}" y="${margin.top - 10}" text-anchor="start" font-size="14" fill="${getCssVar("--muted")}">平均 NCD 系数</text>
-        <text x="${width - margin.right}" y="${margin.top + 14}" text-anchor="end" font-size="13" fill="#b8602e">基线：${baseMetrics[currentRound].avgCoeff.toFixed(4)}</text>
-        <text x="${width - margin.right}" y="${margin.top + 34}" text-anchor="end" font-size="13" fill="#0f7b6c">豁免：${exemptMetrics[currentRound].avgCoeff.toFixed(4)}</text>
-        <text x="${gapLabelX}" y="${gapLabelY}" text-anchor="${gapAnchor}" font-size="13" font-weight="700" fill="#0f7b6c">${currentIsGapRound ? "当前轮次即最大改善点" : "最大改善点"}</text>
-        <text x="${gapLabelX}" y="${gapLabelY + 18}" text-anchor="${gapAnchor}" font-size="12" fill="${getCssVar("--muted")}">第 ${gapRound} 轮 · 差值 ${gapValue.toFixed(4)}</text>
+        <text x="${margin.left}" y="${margin.top - 10}" text-anchor="start" font-size="${labelFontSize}" fill="${getCssVar("--muted")}">平均 NCD 系数</text>
+        <text x="${width - margin.right}" y="${margin.top + 14}" text-anchor="end" font-size="${legendFontSize}" fill="#b8602e">基线：${baseMetrics[currentRound].avgCoeff.toFixed(4)}</text>
+        <text x="${width - margin.right}" y="${margin.top + secondLegendOffset}" text-anchor="end" font-size="${legendFontSize}" fill="#0f7b6c">豁免：${exemptMetrics[currentRound].avgCoeff.toFixed(4)}</text>
+        <text x="${gapLabelX}" y="${gapLabelY}" text-anchor="${gapAnchor}" font-size="${annotationFontSize}" font-weight="700" fill="#0f7b6c">${currentIsGapRound ? "当前轮次即最大改善点" : "最大改善点"}</text>
+        <text x="${gapLabelX}" y="${gapLabelY + annotationSubOffset}" text-anchor="${gapAnchor}" font-size="${annotationSubFontSize}" fill="${getCssVar("--muted")}">第 ${gapRound} 轮 · 差值 ${gapValue.toFixed(4)}</text>
       `;
 
       [baseMetrics, exemptMetrics].forEach((series, seriesIndex) => {
         const color = seriesIndex === 0 ? "#b8602e" : "#0f7b6c";
         const metric = series[currentRound];
         markup += `
-            <circle cx="${currentX}" cy="${yForValue(metric.avgCoeff)}" r="5.5" fill="${color}" stroke="#fff" stroke-width="2"/>
+            <circle cx="${currentX}" cy="${yForValue(metric.avgCoeff)}" r="${pointRadius}" fill="${color}" stroke="#fff" stroke-width="${presentationMode ? 2.6 : 2}"/>
         `;
       });
 
@@ -1956,7 +2535,7 @@
           const color = seriesIndex === 0 ? "#b8602e" : "#0f7b6c";
           const metric = series[gapRound];
           markup += `
-            <circle cx="${gapX}" cy="${yForValue(metric.avgCoeff)}" r="6" fill="${color}" stroke="#fff" stroke-width="2.4"/>
+            <circle cx="${gapX}" cy="${yForValue(metric.avgCoeff)}" r="${focusPointRadius}" fill="${color}" stroke="#fff" stroke-width="${presentationMode ? 3 : 2.4}"/>
           `;
         });
       }
@@ -1965,8 +2544,9 @@
     }
 
     function renderSummary(currentRound) {
-      const baseMetric = state.results.baseMetrics[currentRound];
-      const exemptMetric = state.results.exemptMetrics[currentRound];
+      const { config, baseMetrics, exemptMetrics } = state.results;
+      const baseMetric = baseMetrics[currentRound];
+      const exemptMetric = exemptMetrics[currentRound];
       const coeffDelta = exemptMetric.avgCoeff - baseMetric.avgCoeff;
       const levelDelta = exemptMetric.avgLevel - baseMetric.avgLevel;
       const benefitVehicleDelta = exemptMetric.preferredBucketCount - baseMetric.preferredBucketCount;
@@ -1988,21 +2568,22 @@
       dom.maxGapValue.textContent = formatSignedNumber(state.results.maxCoeffGap, 4);
       dom.terminalGapValue.textContent = formatSignedNumber(state.results.terminalCoeffGap, 4);
 
-      dom.timelineReadout.textContent = `正在查看第 ${currentRound} / ${state.results.config.rounds} 轮`;
+      dom.timelineReadout.textContent = `正在查看第 ${currentRound} / ${config.rounds} 轮`;
 
       const summaryExtra = `${levelDelta <= 0 ? "平均等级更优" : "平均等级更差"} ${formatSignedNumber(levelDelta, 3)} 档`;
-      dom.selectedRoundFoot.textContent = `T = ${state.results.config.rounds} · ${summaryExtra}`;
+      dom.selectedRoundFoot.textContent = `T = ${config.rounds} · ${summaryExtra}`;
     }
 
     function renderComparisonTable() {
       const currentRound = state.currentRound;
+      const levels = state.results.config.levels;
       const baseMetric = state.results.baseMetrics[currentRound];
       const exemptMetric = state.results.exemptMetrics[currentRound];
-      const shareDeltas = LEVELS.map((_, index) => exemptMetric.distribution[index] - baseMetric.distribution[index]);
+      const shareDeltas = levels.map((_, index) => exemptMetric.distribution[index] - baseMetric.distribution[index]);
       const maxAbsShareDelta = Math.max(...shareDeltas.map((value) => Math.abs(value)), 0.000001);
 
       dom.tableCaption.textContent = state.config.displayMode === "count" ? "查看模式：按人数" : "查看模式：按占比";
-      dom.comparisonBody.innerHTML = LEVELS.map((level, index) => {
+      dom.comparisonBody.innerHTML = levels.map((level, index) => {
         const shareDelta = shareDeltas[index];
         const countDelta = exemptMetric.counts[index] - baseMetric.counts[index];
         const deltaWidth = `${Math.abs(shareDelta) / maxAbsShareDelta * 100}%`;
@@ -2047,10 +2628,24 @@
       const tolerance = 1e-9;
       const claimProbabilitySum = results.claimProbabilities.reduce((sum, item) => sum + item.probability, 0);
       const probabilityZero = results.claimProbabilities.find((item) => item.k === 0)?.probability ?? 0;
+      const zeroCapConfig = {
+        ...results.config,
+        maxExemptions: 0
+      };
       const eZeroConfig = {
         ...results.config,
         exemptionPerClaimProb: 0
       };
+      const baseWithZeroCap = projectDistribution(
+        buildTransitionMatrixBase(zeroCapConfig),
+        zeroCapConfig.initialDistribution,
+        zeroCapConfig.rounds
+      );
+      const exemptWithZeroCap = projectDistribution(
+        buildTransitionMatrixExempt(zeroCapConfig),
+        zeroCapConfig.initialDistribution,
+        zeroCapConfig.rounds
+      );
       const baseWithZero = projectDistribution(
         buildTransitionMatrixBase(eZeroConfig),
         eZeroConfig.initialDistribution,
@@ -2082,10 +2677,28 @@
         strongerExemptionConfig.initialDistribution,
         strongerExemptionConfig.rounds
       );
-      const strongerMetrics = calculateSummaryMetrics(strongerSeries, COEFFICIENTS, strongerExemptionConfig.population);
+      const strongerMetrics = calculateSummaryMetrics(
+        strongerSeries,
+        strongerExemptionConfig.levels,
+        strongerExemptionConfig.coefficients,
+        strongerExemptionConfig.population
+      );
       const strongerFinalCoeff = strongerMetrics[strongerMetrics.length - 1].avgCoeff;
       const currentExemptFinalCoeff = results.exemptMetrics[results.exemptMetrics.length - 1].avgCoeff;
-      const exampleTransition = getExemptionTransition(-1, 2, 1);
+      const singleCapOutcomes = buildExemptionOutcomeProbabilities(2, results.config.exemptionPerClaimProb, 1);
+      const singleCapProbabilityZero = singleCapOutcomes.find((item) => item.exemptions === 0)?.probability ?? 0;
+      const singleCapProbabilityOne = singleCapOutcomes.find((item) => item.exemptions === 1)?.probability ?? 0;
+      const cappedByClaimCountOutcomes = buildExemptionOutcomeProbabilities(2, 0.4, 4);
+      const cappedByClaimCountMax = Math.max(...cappedByClaimCountOutcomes.map((item) => item.exemptions));
+      const fullExemptionOutcomes = buildExemptionOutcomeProbabilities(2, 1, 1);
+      const exampleTransitionPass = fullExemptionOutcomes.length === 1
+        && fullExemptionOutcomes[0].exemptions === 1
+        && transitionLevel(-1, 2, 1, results.config.minLevel) === -1;
+      const allConditionalSumsPass = Array.from({ length: EXACT_CLAIM_COUNT_MAX + 1 }, (_, claimCount) => {
+        const outcomes = buildExemptionOutcomeProbabilities(claimCount, results.config.exemptionPerClaimProb, results.config.maxExemptions);
+        const sum = outcomes.reduce((total, item) => total + item.probability, 0);
+        return Math.abs(sum - 1) < 1e-10;
+      }).every(Boolean);
       const referenceFrequency = 0.35;
       const referenceProbabilities = buildPoissonClaimProbabilities({
         ...results.config,
@@ -2117,6 +2730,10 @@
           pass: referenceExamplePass
         },
         {
+          label: "A | K=k 的条件分布总和 = 1",
+          pass: allConditionalSumsPass
+        },
+        {
           label: "基线转移矩阵每行之和 = 1",
           pass: results.baseMatrix.every((row) => Math.abs(row.reduce((sum, value) => sum + value, 0) - 1) < tolerance)
         },
@@ -2133,16 +2750,30 @@
           pass: [...results.baseSeries, ...results.exemptSeries].every((distribution) => Math.abs(distribution.reduce((sum, value) => sum + value, 0) - 1) < tolerance)
         },
         {
+          label: "M = 0 时豁免方案退化为基线方案",
+          pass: seriesEqual(baseWithZeroCap, exemptWithZeroCap, tolerance)
+        },
+        {
           label: "e = 0 时豁免方案退化为基线方案",
           pass: seriesEqual(baseWithZero, exemptWithZero, tolerance)
         },
         {
-          label: "F = 0 时分布逐轮收敛到 -4 档",
-          pass: zeroFrequencyFinal[0] > 1 - 1e-6 && zeroFrequencyFinal.slice(1).every((value) => value < 1e-6)
+          label: `F = 0 时分布逐轮收敛到 ${formatSignedLevel(results.config.minLevel)} 档`,
+          pass: zeroFrequencyFinal[levelIndex(results.config.levels, results.config.minLevel)] > 1 - 1e-6
+            && zeroFrequencyFinal.every((value, index) => index === levelIndex(results.config.levels, results.config.minLevel) || value < 1e-6)
         },
         {
           label: "规则示例：初始 -1、2 次赔次、豁免 1 次后保持 -1",
-          pass: exampleTransition.exemptionChance === 1 && exampleTransition.exemptTarget === -1
+          pass: exampleTransitionPass
+        },
+        {
+          label: "M = 1 时退化为旧版单次豁免概率",
+          pass: Math.abs(singleCapProbabilityZero - Math.pow(1 - results.config.exemptionPerClaimProb, 2)) < 1e-10
+            && Math.abs(singleCapProbabilityOne - (1 - Math.pow(1 - results.config.exemptionPerClaimProb, 2))) < 1e-10
+        },
+        {
+          label: "当 K < M 时，实际豁免次数不会超过出险次数",
+          pass: cappedByClaimCountMax === 2
         },
         {
           label: "提高 e 不会让平均 NCD 系数变差",
@@ -2196,27 +2827,54 @@
     }
 
     function syncControlsFromState() {
+      dom.presentationModeToggle.checked = state.presentationMode;
+      dom.regionSelect.value = state.config.region;
       dom.roundsRange.value = String(state.config.rounds);
       dom.roundsInput.value = String(state.config.rounds);
       dom.frequencyRange.value = String(state.config.claimFrequency * 100);
       dom.frequencyInput.value = String(state.config.claimFrequency * 100);
       dom.exemptionRange.value = String(state.config.exemptionPerClaimProb * 100);
       dom.exemptionInput.value = String(state.config.exemptionPerClaimProb * 100);
+      dom.maxExemptionsSelect.value = String(state.config.maxExemptions);
       dom.populationInput.value = String(state.config.population);
       dom.speedRange.value = String(state.config.animationSpeed);
       dom.displayMode.value = state.config.displayMode;
       dom.highlightDiff.checked = state.config.highlightDiff;
-      LEVELS.forEach((_, index) => {
+      const editableDistribution = getEditableDistribution(state.config, state.config.region);
+      getRegionSpec(state.config.region).levels.forEach((_, index) => {
         const input = document.getElementById(`dist-${index}`);
-        input.value = (state.config.initialDistribution[index] * 100).toFixed(1);
+        if (input) {
+          input.value = (editableDistribution[index] * 100).toFixed(1);
+        }
       });
       syncDerivedLabels();
       dom.timeSlider.value = String(state.currentRound);
     }
 
+    function applyPresentationMode(enabled) {
+      document.body.dataset.presentationMode = enabled ? "on" : "off";
+      dom.presentationModeToggle.checked = enabled;
+    }
+
+    function loadPresentationModePreference() {
+      try {
+        return window.localStorage.getItem(PRESENTATION_MODE_STORAGE_KEY) === "1";
+      } catch (error) {
+        return false;
+      }
+    }
+
+    function persistPresentationModePreference(enabled) {
+      try {
+        window.localStorage.setItem(PRESENTATION_MODE_STORAGE_KEY, enabled ? "1" : "0");
+      } catch (error) {
+        // Ignore persistence failures and fall back to session-only behavior.
+      }
+    }
+
     function syncDerivedLabels() {
       const resultConfig = state.results ? state.results.config : state.config;
-      const distributionTotal = state.config.initialDistribution.reduce((sum, value) => sum + sanitizeNonNegative(value, 0), 0);
+      const distributionTotal = getEditableDistribution(state.config, state.config.region).reduce((sum, value) => sum + sanitizeNonNegative(value, 0), 0);
 
       dom.roundsLabel.textContent = `${resultConfig.rounds} 轮`;
       dom.frequencyLabel.textContent = `${(resultConfig.claimFrequency * 100).toFixed(1)}%`;
@@ -2225,12 +2883,12 @@
       dom.distributionTotal.textContent = `${(distributionTotal * 100).toFixed(1)}%`;
     }
 
-    function transitionLevel(level, effectiveClaimCount) {
-      return clampNumber(level - 1 + effectiveClaimCount, -4, 5, 0);
+    function transitionLevel(level, effectiveClaimCount, exemptionCount, minLevel) {
+      return clampNumber(level - 1 + effectiveClaimCount - exemptionCount, minLevel, 5, 0);
     }
 
-    function levelIndex(level) {
-      return LEVELS.indexOf(level);
+    function levelIndex(levels, level) {
+      return levels.indexOf(level);
     }
 
     function normalizeRow(row) {
@@ -2241,8 +2899,8 @@
       return row.map((value) => value / total);
     }
 
-    function createZeroVector() {
-      return new Array(LEVELS.length).fill(0);
+    function createZeroVector(length) {
+      return new Array(length).fill(0);
     }
 
     function seriesEqual(seriesA, seriesB, tolerance) {
@@ -2263,8 +2921,55 @@
     function cloneConfig(config) {
       return {
         ...config,
-        initialDistribution: [...config.initialDistribution]
+        regionDistributions: cloneRegionDistributions(config.regionDistributions)
       };
+    }
+
+    function cloneRegionDistributions(distributions) {
+      return Object.fromEntries(Object.entries(distributions).map(([region, distribution]) => [region, [...distribution]]));
+    }
+
+    function getRegionSpec(regionKey) {
+      return REGION_SPECS[regionKey] || REGION_SPECS[DEFAULT_REGION_KEY];
+    }
+
+    function getEditableDistribution(config, regionKey) {
+      const normalizedRegionKey = getRegionSpec(regionKey).key;
+      const fallback = DEFAULT_REGION_DISTRIBUTIONS[normalizedRegionKey];
+      const raw = config.regionDistributions?.[normalizedRegionKey];
+      if (!Array.isArray(raw) || raw.length !== fallback.length) {
+        return [...fallback];
+      }
+      return [...raw];
+    }
+
+    function getLevelColor(level) {
+      return LEVEL_COLOR_BY_LEVEL.get(level) || getCssVar("--brick-9");
+    }
+
+    function getExemptionPolicyLabel(maxExemptions) {
+      return maxExemptions === 0 ? "不设置自动驾驶豁免" : `每保单期最多豁免 ${maxExemptions} 次`;
+    }
+
+    function getExemptionPlanDescription(maxExemptions) {
+      return maxExemptions === 0 ? "不设置自动驾驶责任事故豁免" : `责任事故最多可豁免 ${maxExemptions} 次`;
+    }
+
+    function binomialProbability(n, k, p) {
+      if (k < 0 || k > n) {
+        return 0;
+      }
+      if (p === 0) {
+        return k === 0 ? 1 : 0;
+      }
+      if (p === 1) {
+        return k === n ? 1 : 0;
+      }
+      let combination = 1;
+      for (let i = 1; i <= k; i += 1) {
+        combination *= (n - k + i) / i;
+      }
+      return combination * Math.pow(p, k) * Math.pow(1 - p, n - k);
     }
 
     function clampNumber(value, min, max, fallback) {
